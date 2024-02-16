@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://blf8ofe3m4xsa"]
+[gd_scene load_steps=27 format=3 uid="uid://blf8ofe3m4xsa"]
 
 [ext_resource type="Texture2D" uid="uid://cg1aekn3qe8ku" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-1.png" id="1_7r47v"]
 [ext_resource type="Script" path="res://Entities/Units/Player/Player.cs" id="1_3040n"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://cqfceo56thkwy" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/run/player-run-4.png" id="17_dtx5k"]
 [ext_resource type="Texture2D" uid="uid://uuor86qp66dd" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/run/player-run-5.png" id="18_68ish"]
 [ext_resource type="Texture2D" uid="uid://bxgxr5871dm6t" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/run/player-run-6.png" id="19_tc4y0"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="21_oa51p"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/State/IdleUnitState.cs" id="22_2a88s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afhor"]
 size = Vector2(21, 23)
@@ -114,6 +116,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_wkb8w"]
+resource_name = "Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28kre"]
+_data = {
+"Idle": SubResource("Animation_wkb8w")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3040n")
 
@@ -123,7 +133,16 @@ shape = SubResource("RectangleShape2D_afhor")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fysra")
-animation = &"Run"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 4
-frame_progress = 0.994272
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28kre")
+}
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("21_oa51p")
+
+[node name="IdleUnitState" type="Node" parent="StateMachine"]
+script = ExtResource("22_2a88s")
