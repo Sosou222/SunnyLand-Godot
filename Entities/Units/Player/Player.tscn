@@ -124,8 +124,9 @@ _data = {
 "Idle": SubResource("Animation_wkb8w")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine")]
 script = ExtResource("1_3040n")
+stateMachine = NodePath("StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 4.5)
@@ -143,6 +144,13 @@ libraries = {
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("21_oa51p")
+initialState = "IdleUnitState"
 
 [node name="IdleUnitState" type="Node" parent="StateMachine"]
+script = ExtResource("22_2a88s")
+
+[node name="IdleUnitState2" type="Node" parent="StateMachine"]
+script = ExtResource("22_2a88s")
+
+[node name="IdleUnitState3" type="Node" parent="StateMachine"]
 script = ExtResource("22_2a88s")

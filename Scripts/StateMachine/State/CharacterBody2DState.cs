@@ -1,13 +1,10 @@
 using Godot;
 using System;
 
-public partial class CharacterBody2DState : BaseState
+public partial class CharacterBody2DState : BaseState<CharacterBody2D>
 {
-    protected CharacterBody2D owner;
-
-    public override void Init(Node owner)
+    public override void Enter()
     {
-        if (owner is  CharacterBody2D) 
-            owner = (CharacterBody2D)owner;
+        
     }
 }
