@@ -16,8 +16,7 @@ public partial class Player : CharacterBody2D
 
     public override void _Ready()
     {
-        GD.Print("PlayerReady");
-		stateMachine.Init(this as CharacterBody2D);
+		stateMachine.Init(this);
     }
 
     public override void _Process(double delta)

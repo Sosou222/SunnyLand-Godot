@@ -2,10 +2,20 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class IdleUnitState : BaseState<CharacterBody2D>
+public partial class IdleUnitState : AbstractState<CharacterBody2D>
 {
     public override void Enter()
     {
-        GD.Print($"My owner is {owner.Name}");
+
+    }
+
+    public override void Update(double delta)
+    {
+        
+    }
+
+    public override void PhysicsUpdate(double delta)
+    {
+        
     }
 }

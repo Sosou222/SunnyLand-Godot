@@ -7,8 +7,8 @@ using System.Linq;
 [GlobalClass]
 public partial class StateMachine : Node
 {
-    protected Dictionary<string, BaseState<Node>> states = new Dictionary<string, BaseState<Node>>();
-    public BaseState<Node> CurrentState { get; private set; }
+    protected Dictionary<string, BaseState> states = new Dictionary<string, BaseState>();
+    public BaseState CurrentState { get; private set; }
 
     public string CurrentStateName { get; private set; }
 
@@ -18,13 +18,12 @@ public partial class StateMachine : Node
     public void Init<T>(T owner) where T : Node
     {
         
-        GD.Print("Initalizaing states");
-        GD.Print($"Dictonary Value Type:{states.Values.GetType()}");
-        foreach(var child in GetChildren().OfType<BaseState<T>>())
+        foreach(var child in GetChildren().OfType<BaseState>())
         {
-            GD.Print($"Trying to add child:{child.Name} and is type:{child.GetType()} is subclass:{child.GetType().IsSubclassOf(states.Values.GetType())}");
-            child.Init(owner);
-            Add(child.Name, child);
+            if(child.Init(owner))
+            {
+                Add(child.Name, child);
+            }
         }
 
         InitalState(initialState);
@@ -43,14 +42,10 @@ public partial class StateMachine : Node
         CurrentState.Enter();
     }
 
-    public void Add<T>(string name, BaseState<T> state) where T : Node
+    public void Add(string name, BaseState state)
     {
-        var tmp = state as BaseState<Node>;
-        if (tmp == null)
-            GD.Print("Is Null");
-        states[name] = state as BaseState<Node>;
+        states[name] = state;
         state.stateMachine = this;
-        GD.Print($"AddedCurrentCount:{states.Count}");
     }
 
     public void ChangeState(string name)
@@ -66,16 +61,16 @@ public partial class StateMachine : Node
 
     public void Update(double delta)
     {
-        //CurrentState.Update(delta);
+        CurrentState.Update(delta);
     }
 
     public void PhysicsUpdate(double delta)
     {
-        //CurrentState.PhysicsUpdate(delta);
+        CurrentState.PhysicsUpdate(delta);
     }
 
     public void ProcessInput(InputEvent input)
     {
-        //CurrentState.ProcessInput(input);
+        CurrentState.ProcessInput(input);
     }
 }
