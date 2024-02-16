@@ -21,6 +21,7 @@ text = "Start
 "
 
 [node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 168.0
 offset_top = 173.0
 offset_right = 328.0
