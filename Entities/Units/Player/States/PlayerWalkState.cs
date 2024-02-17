@@ -19,6 +19,12 @@ public partial class PlayerWalkState : PlayerState
             return;
         }
 
+        if (Input.IsActionJustPressed("PlayerCrouch") && owner.IsOnFloor())
+        {
+            stateMachine.ChangeState(StateNames.Crouch.ToString());
+            return;
+        }
+
         if (!Input.IsActionPressed("PlayerLeft") && !Input.IsActionPressed("PlayerRight"))
         {
             stateMachine.ChangeState(StateNames.Idle.ToString());

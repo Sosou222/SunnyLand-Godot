@@ -22,6 +22,13 @@ public partial class PlayerIdleState : PlayerState
             stateMachine.ChangeState(StateNames.Walk.ToString());
             return;
         }
+
+        if (Input.IsActionJustPressed("PlayerCrouch") && owner.IsOnFloor())
+        {
+            stateMachine.ChangeState(StateNames.Crouch.ToString());
+            return;
+        }
+
         if (owner.MovementComponent.WantsToJump())
         {
             stateMachine.ChangeState(StateNames.Jump.ToString());

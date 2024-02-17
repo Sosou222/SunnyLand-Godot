@@ -9,7 +9,8 @@ public partial class PlayerState : BaseState
     {
         Idle,
         Walk,
-        Jump
+        Jump,
+        Crouch
     }
 
 

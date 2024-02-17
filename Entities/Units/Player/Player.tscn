@@ -1,8 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://blf8ofe3m4xsa"]
+[gd_scene load_steps=37 format=3 uid="uid://blf8ofe3m4xsa"]
 
 [ext_resource type="Texture2D" uid="uid://cg1aekn3qe8ku" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-1.png" id="1_7r47v"]
 [ext_resource type="Script" path="res://Entities/Units/Player/Player.cs" id="1_3040n"]
 [ext_resource type="Texture2D" uid="uid://bch4nxjvcquio" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-2.png" id="2_bpjji"]
+[ext_resource type="Shape2D" uid="uid://r5nj3q2tfcux" path="res://Entities/Units/Player/PlayerCollisionNormal.tres" id="2_d58qw"]
+[ext_resource type="Shape2D" uid="uid://dwmxfc3o7ockb" path="res://Entities/Units/Player/PlayerCollisionCrouch.tres" id="2_n1num"]
 [ext_resource type="Texture2D" uid="uid://33fly7jl168" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-3.png" id="3_j21il"]
 [ext_resource type="Texture2D" uid="uid://ufgqpb0aw4gp" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/crouch/player-crouch-1.png" id="4_is8ny"]
 [ext_resource type="Texture2D" uid="uid://brona8g14bs3e" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/crouch/player-crouch-2.png" id="5_tinhl"]
@@ -25,9 +27,7 @@
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerIdleState.cs" id="23_cquva"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerJumpState.cs" id="24_46nr0"]
 [ext_resource type="Script" path="res://Scripts/Components/PlayerMovementComponent.cs" id="24_ttbo8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_afhor"]
-size = Vector2(21, 23)
+[ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerCrouchState.cs" id="26_gnjoo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fysra"]
 animations = [{
@@ -250,8 +250,38 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_1fckd"]
+resource_name = "Crouch"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Crouch"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28kre"]
 _data = {
+"Crouch": SubResource("Animation_1fckd"),
 "Fall": SubResource("Animation_xnd83"),
 "Idle": SubResource("Animation_wkb8w"),
 "Jump": SubResource("Animation_dqywn"),
@@ -266,15 +296,15 @@ animationPlayer = NodePath("AnimationPlayer")
 AnimatedSprite2D = NodePath("AnimatedSprite2D")
 MovementComponent = NodePath("Components/PlayerMovementComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 4.5)
-shape = SubResource("RectangleShape2D_afhor")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fysra")
 animation = &"Crouch"
 autoplay = "Idle"
 frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+shape = ExtResource("2_d58qw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -295,8 +325,24 @@ script = ExtResource("23_cquva")
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("24_46nr0")
 
+[node name="Crouch" type="Node" parent="StateMachine" node_paths=PackedStringArray("playerColision", "leftRaycast", "rightRaycast")]
+script = ExtResource("26_gnjoo")
+playerColision = NodePath("../../CollisionShape2D")
+playerNormalShape = ExtResource("2_d58qw")
+playerCrouchShape = ExtResource("2_n1num")
+leftRaycast = NodePath("../../RayCastLeft")
+rightRaycast = NodePath("../../RayCastRight")
+
 [node name="Components" type="Node" parent="."]
 
 [node name="PlayerMovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("owner")]
 script = ExtResource("24_ttbo8")
 owner = NodePath("../..")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-7, 16)
+target_position = Vector2(0, -21)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(5, 16)
+target_position = Vector2(0, -21)
