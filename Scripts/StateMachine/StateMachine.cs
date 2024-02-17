@@ -27,8 +27,6 @@ public partial class StateMachine : Node
         }
 
         InitalState(initialState);
-        GD.Print(states.ToString());
-
     }
 
     private void InitalState(string name)
@@ -53,7 +51,6 @@ public partial class StateMachine : Node
     {
         if (CurrentStateName == name || !states.ContainsKey(name))
         {
-            GD.Print("DOn't change to " + name);
             return;
         }
 
