@@ -1,7 +1,8 @@
 using Godot;
 using System;
 
-public partial class BaseState : Node 
+[GlobalClass]
+public abstract partial class BaseState : Node
 {
     public StateMachine stateMachine;
 

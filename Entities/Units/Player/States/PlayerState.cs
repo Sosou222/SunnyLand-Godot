@@ -1,7 +1,8 @@
 using Godot;
 using System;
 
-public partial class PlayerState : BaseState
+[GlobalClass]
+public abstract partial class PlayerState : BaseState
 {
     protected Player owner;
 
