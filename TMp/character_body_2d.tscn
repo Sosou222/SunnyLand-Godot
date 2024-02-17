@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxg5y85jw0mob"]
+
+[ext_resource type="Script" path="res://TMp/character_body_2d.cs" id="1_rfuxc"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_rfuxc")
