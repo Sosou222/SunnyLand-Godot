@@ -21,9 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://uuor86qp66dd" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/run/player-run-5.png" id="18_68ish"]
 [ext_resource type="Texture2D" uid="uid://bxgxr5871dm6t" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/run/player-run-6.png" id="19_tc4y0"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="21_oa51p"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/State/UnitStates/IdleUnitState.cs" id="22_7sbx4"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/State/UnitStates/WalkUnitState.cs" id="22_7yecd"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/State/UnitStates/JumpUnitState.cs" id="24_lxw7p"]
+[ext_resource type="Script" path="res://Entities/Units/States/IdleUnitState.cs" id="22_7sbx4"]
+[ext_resource type="Script" path="res://Entities/Units/States/WalkUnitState.cs" id="22_7yecd"]
+[ext_resource type="Script" path="res://Entities/Units/States/JumpUnitState.cs" id="24_lxw7p"]
 [ext_resource type="Script" path="res://Scripts/Components/PlayerMovementComponent.cs" id="24_ttbo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afhor"]
@@ -272,7 +272,7 @@ shape = SubResource("RectangleShape2D_afhor")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fysra")
-animation = &"Run"
+animation = &"Crouch"
 autoplay = "Idle"
 frame = 1
 
