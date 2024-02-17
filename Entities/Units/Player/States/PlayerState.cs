@@ -1,22 +1,30 @@
 using Godot;
 using System;
 
-public partial class UnitBaseState : BaseState
+public partial class PlayerState : BaseState
 {
+    protected Player owner;
+
+    public enum StateNames
+    {
+        Idle,
+        Walk,
+        Jump
+    }
+
 
     protected const float Speed = 300.0f;
     protected const float JumpVelocity = -400.0f;
 
     protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
-    protected Unit owner;
     public override bool Init<T>(T owner)
     {
-        if (owner as Unit == null)
+        if (owner as Player == null)
         {
             return false;
         }
-        this.owner = owner as Unit;
+        this.owner = owner as Player;
         return true;
     }
 
@@ -28,7 +36,7 @@ public partial class UnitBaseState : BaseState
             velocity.Y += gravity * (float)delta;
 
         Vector2 direction = Input.GetVector("PlayerLeft", "PlayerRight", "PlayerUp", "PlayerDown");
-        FlipUnit(direction.X);
+        FlipPlayer(direction.X);
         if (direction != Vector2.Zero)
         {
             velocity.X = direction.X * Speed;
@@ -44,7 +52,7 @@ public partial class UnitBaseState : BaseState
         return velocity;
     }
 
-    protected void FlipUnit(float x)
+    protected void FlipPlayer(float x)
     {
         if (x > 0)
         {

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class IdleUnitState : UnitBaseState
+public partial class PlayerIdleState : PlayerState
 {
     public override void Enter()
     {
@@ -19,12 +19,12 @@ public partial class IdleUnitState : UnitBaseState
     {
         if (owner.MovementComponent.GetMovementDir().X != 0.0f)
         {
-            stateMachine.ChangeState("WalkUnitState");
+            stateMachine.ChangeState(StateNames.Walk.ToString());
             return;
         }
         if (owner.MovementComponent.WantsToJump())
         {
-            stateMachine.ChangeState("JumpUnitState");
+            stateMachine.ChangeState(StateNames.Jump.ToString());
             return;
         }
 

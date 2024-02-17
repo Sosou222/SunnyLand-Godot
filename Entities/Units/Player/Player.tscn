@@ -21,9 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://uuor86qp66dd" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/run/player-run-5.png" id="18_68ish"]
 [ext_resource type="Texture2D" uid="uid://bxgxr5871dm6t" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/run/player-run-6.png" id="19_tc4y0"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="21_oa51p"]
-[ext_resource type="Script" path="res://Entities/Units/States/IdleUnitState.cs" id="22_7sbx4"]
-[ext_resource type="Script" path="res://Entities/Units/States/WalkUnitState.cs" id="22_7yecd"]
-[ext_resource type="Script" path="res://Entities/Units/States/JumpUnitState.cs" id="24_lxw7p"]
+[ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerWalkState.cs" id="22_7vqk1"]
+[ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerIdleState.cs" id="23_cquva"]
+[ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerJumpState.cs" id="24_46nr0"]
 [ext_resource type="Script" path="res://Scripts/Components/PlayerMovementComponent.cs" id="24_ttbo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afhor"]
@@ -264,7 +264,7 @@ script = ExtResource("1_3040n")
 stateMachine = NodePath("StateMachine")
 animationPlayer = NodePath("AnimationPlayer")
 AnimatedSprite2D = NodePath("AnimatedSprite2D")
-MovementComponent = NodePath("PlayerMovementComponent")
+MovementComponent = NodePath("Components/PlayerMovementComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 4.5)
@@ -284,17 +284,19 @@ autoplay = "Idle"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("21_oa51p")
-initialState = "JumpUnitState"
+initialState = "Jump"
 
-[node name="WalkUnitState" type="Node" parent="StateMachine"]
-script = ExtResource("22_7yecd")
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("22_7vqk1")
 
-[node name="IdleUnitState" type="Node" parent="StateMachine"]
-script = ExtResource("22_7sbx4")
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("23_cquva")
 
-[node name="JumpUnitState" type="Node" parent="StateMachine"]
-script = ExtResource("24_lxw7p")
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("24_46nr0")
 
-[node name="PlayerMovementComponent" type="Node" parent="." node_paths=PackedStringArray("owner")]
+[node name="Components" type="Node" parent="."]
+
+[node name="PlayerMovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("owner")]
 script = ExtResource("24_ttbo8")
-owner = NodePath("..")
+owner = NodePath("../..")

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class JumpUnitState : UnitBaseState
+public partial class PlayerJumpState : PlayerState
 {
     [Export]
     private string animationJump = "Jump";
@@ -38,13 +38,13 @@ public partial class JumpUnitState : UnitBaseState
 
         if (owner.IsOnFloor() && (Input.IsActionPressed("PlayerLeft") || Input.IsActionPressed("PlayerRight")))
         {
-            stateMachine.ChangeState("WalkUnitState");
+            stateMachine.ChangeState(StateNames.Walk.ToString());
             return;
         }
 
         if (owner.IsOnFloor())
         {
-            stateMachine.ChangeState("IdleUnitState");
+            stateMachine.ChangeState(StateNames.Idle.ToString());
             return;
         }
     }

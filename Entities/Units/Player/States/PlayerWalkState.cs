@@ -1,9 +1,8 @@
 using Godot;
 using System;
 
-public partial class WalkUnitState : UnitBaseState
+public partial class PlayerWalkState : PlayerState
 {
-
     public override void Enter()
     {
         GD.Print("Walk Unit Enter");
@@ -14,17 +13,16 @@ public partial class WalkUnitState : UnitBaseState
     {
         BaseMovement(delta);
 
-        if (Input.IsActionJustPressed("PlayerJump") || !owner.IsOnFloor())
+        if (owner.MovementComponent.WantsToJump() || !owner.IsOnFloor())
         {
-            stateMachine.ChangeState("JumpUnitState");
+            stateMachine.ChangeState(StateNames.Jump.ToString());
             return;
         }
 
         if (!Input.IsActionPressed("PlayerLeft") && !Input.IsActionPressed("PlayerRight"))
         {
-            stateMachine.ChangeState("IdleUnitState");
+            stateMachine.ChangeState(StateNames.Idle.ToString());
             return;
         }
     }
-
 }
