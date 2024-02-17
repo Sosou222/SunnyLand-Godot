@@ -17,17 +17,18 @@ public partial class StateMachine : Node
 
     public void Init<T>(T owner) where T : Node
     {
-        
-        foreach(var child in GetChildren().OfType<BaseState>())
+
+        foreach (var child in GetChildren().OfType<BaseState>())
         {
-            if(child.Init(owner))
+            if (child.Init(owner))
             {
                 Add(child.Name, child);
             }
         }
 
         InitalState(initialState);
-        
+        GD.Print(states.ToString());
+
     }
 
     private void InitalState(string name)
@@ -51,7 +52,11 @@ public partial class StateMachine : Node
     public void ChangeState(string name)
     {
         if (CurrentStateName == name || !states.ContainsKey(name))
+        {
+            GD.Print("DOn't change to " + name);
             return;
+        }
+
 
         CurrentState.Exit();
         CurrentState = states[name];
