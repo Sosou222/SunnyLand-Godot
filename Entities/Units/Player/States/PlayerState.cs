@@ -11,7 +11,8 @@ public abstract partial class PlayerState : BaseState
         Idle,
         Walk,
         Jump,
-        Crouch
+        Crouch,
+        Sprint
     }
 
     public override bool Init<T>(T owner)
@@ -37,5 +38,10 @@ public abstract partial class PlayerState : BaseState
     protected bool WantToCrouch()
     {
         return Input.IsActionPressed("PlayerCrouch");
+    }
+
+    protected bool WantToSprint()
+    {
+        return Input.IsActionPressed("PlayerSprint");
     }
 }

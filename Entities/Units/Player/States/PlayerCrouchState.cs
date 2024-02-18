@@ -26,6 +26,8 @@ public partial class PlayerCrouchState : PlayerMovementState
         GD.Print("Crouch Player Enter");
         owner.animationPlayer.Play(crouchAnimation);
         SetShape(playerCrouchShape, crouchPosition);
+
+        Speed = NormalSpeed;
     }
 
     public override void PhysicsUpdate(double delta)

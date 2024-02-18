@@ -2,14 +2,14 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class PlayerWalkState : PlayerMovementState
+public partial class PlayerSprintState : PlayerMovementState
 {
     public override void Enter()
     {
-        GD.Print("Walk Unit Enter");
+        GD.Print("Sprint Player Enter");
         owner.animationPlayer.Play("Run");
 
-        Speed = NormalSpeed;
+        Speed = SprintSpeed;
     }
 
     public override void PhysicsUpdate(double delta)
@@ -34,9 +34,9 @@ public partial class PlayerWalkState : PlayerMovementState
             return;
         }
 
-        if (WantToSprint() && owner.IsOnFloor())
+        if (!WantToSprint() && owner.IsOnFloor())
         {
-            stateMachine.ChangeState(StateNames.Sprint.ToString());
+            stateMachine.ChangeState(StateNames.Walk.ToString());
             return;
         }
     }

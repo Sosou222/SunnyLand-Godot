@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://blf8ofe3m4xsa"]
+[gd_scene load_steps=37 format=3 uid="uid://blf8ofe3m4xsa"]
 
 [ext_resource type="Texture2D" uid="uid://cg1aekn3qe8ku" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-1.png" id="1_7r47v"]
 [ext_resource type="Script" path="res://Entities/Units/Player/Player.cs" id="1_3040n"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerIdleState.cs" id="23_cquva"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerJumpState.cs" id="24_46nr0"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerCrouchState.cs" id="26_gnjoo"]
+[ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerSprintState.cs" id="28_kkxsu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fysra"]
 animations = [{
@@ -330,6 +331,9 @@ playerNormalShape = ExtResource("2_d58qw")
 playerCrouchShape = ExtResource("2_n1num")
 leftRaycast = NodePath("../../RayCastLeft")
 rightRaycast = NodePath("../../RayCastRight")
+
+[node name="Sprint" type="Node" parent="StateMachine"]
+script = ExtResource("28_kkxsu")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-7, 16)
