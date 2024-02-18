@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class PlayerCrouchState : PlayerState
+public partial class PlayerCrouchState : PlayerMovementState
 {
     [Export]
     private CollisionShape2D playerColision;

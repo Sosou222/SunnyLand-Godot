@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class PlayerJumpState : PlayerState
+public partial class PlayerJumpState : PlayerMovementState
 {
     [Export]
     private string animationJump = "Jump";
