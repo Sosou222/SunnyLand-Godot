@@ -30,7 +30,7 @@ public partial class PlayerCrouchState : PlayerMovementState
 
     public override void PhysicsUpdate(double delta)
     {
-        BaseMovement(delta);
+        base.PhysicsUpdate(delta);
 
         if (!Input.IsActionPressed("PlayerCrouch"))
         {

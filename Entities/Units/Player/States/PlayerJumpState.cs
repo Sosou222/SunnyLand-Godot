@@ -33,7 +33,7 @@ public partial class PlayerJumpState : PlayerMovementState
 
     public override void PhysicsUpdate(double delta)
     {
-        Vector2 velocity = BaseMovement(delta);
+        base.PhysicsUpdate(delta);
 
         PlayJumpAnimation(velocity);
 

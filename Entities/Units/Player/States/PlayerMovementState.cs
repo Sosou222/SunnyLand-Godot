@@ -8,12 +8,9 @@ public abstract partial class PlayerMovementState : PlayerState
 
     protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
-    public override void PhysicsUpdate(double delta)
-    {
-        base.PhysicsUpdate(delta);
-    }
+    protected Vector2 velocity;
 
-    protected Vector2 BaseMovement(double delta)
+    public override void PhysicsUpdate(double delta)
     {
         Vector2 velocity = owner.Velocity;
 
@@ -33,8 +30,6 @@ public abstract partial class PlayerMovementState : PlayerState
 
         owner.Velocity = velocity;
         owner.MoveAndSlide();
-
-        return velocity;
     }
 
     protected void FlipPlayer(float x)

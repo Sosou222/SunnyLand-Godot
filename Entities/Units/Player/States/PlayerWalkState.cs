@@ -12,7 +12,7 @@ public partial class PlayerWalkState : PlayerMovementState
 
     public override void PhysicsUpdate(double delta)
     {
-        BaseMovement(delta);
+        base.PhysicsUpdate(delta);
 
         if (owner.MovementComponent.WantsToJump() || !owner.IsOnFloor())
         {
