@@ -3,8 +3,8 @@ using System;
 
 public abstract partial class PlayerMovementState : PlayerState
 {
-    protected const float Speed = 300.0f;
-    protected const float JumpVelocity = -400.0f;
+    protected const float Speed = 180.0f;
+    protected const float JumpVelocity = -320.0f;
 
     protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
