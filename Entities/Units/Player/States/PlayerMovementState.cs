@@ -17,7 +17,7 @@ public abstract partial class PlayerMovementState : PlayerState
         if (!owner.IsOnFloor())
             velocity.Y += gravity * (float)delta;
 
-        Vector2 direction = Input.GetVector("PlayerLeft", "PlayerRight", "PlayerUp", "PlayerDown");
+        Vector2 direction = GetInputVector();
         FlipPlayer(direction.X);
         if (direction != Vector2.Zero)
         {

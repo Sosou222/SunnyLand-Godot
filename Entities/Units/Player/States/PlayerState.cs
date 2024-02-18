@@ -24,4 +24,18 @@ public abstract partial class PlayerState : BaseState
         return true;
     }
 
+    protected Vector2 GetInputVector()
+    {
+        return Input.GetVector("PlayerLeft", "PlayerRight", "PlayerUp", "PlayerDown"); ;
+    }
+
+    protected bool WantsToJump()
+    {
+        return Input.IsActionJustPressed("PlayerJump");
+    }
+
+    protected bool WantToCrouch()
+    {
+        return Input.IsActionPressed("PlayerCrouch");
+    }
 }

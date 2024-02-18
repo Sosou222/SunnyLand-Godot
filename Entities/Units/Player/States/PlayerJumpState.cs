@@ -13,7 +13,7 @@ public partial class PlayerJumpState : PlayerMovementState
     {
         GD.Print("Jump Unit Enter");
         owner.animationPlayer.Play(animationJump);
-        if (owner.IsOnFloor() && owner.MovementComponent.WantsToJump())
+        if (owner.IsOnFloor() && WantsToJump())
         {
             Jump();
         }

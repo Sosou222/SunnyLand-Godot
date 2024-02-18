@@ -32,7 +32,7 @@ public partial class PlayerCrouchState : PlayerMovementState
     {
         base.PhysicsUpdate(delta);
 
-        if (!Input.IsActionPressed("PlayerCrouch"))
+        if (!WantToCrouch())
         {
             if (!(leftRaycast.IsColliding() || rightRaycast.IsColliding()))
             {

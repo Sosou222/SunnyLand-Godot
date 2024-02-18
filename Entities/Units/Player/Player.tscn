@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://blf8ofe3m4xsa"]
+[gd_scene load_steps=36 format=3 uid="uid://blf8ofe3m4xsa"]
 
 [ext_resource type="Texture2D" uid="uid://cg1aekn3qe8ku" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-1.png" id="1_7r47v"]
 [ext_resource type="Script" path="res://Entities/Units/Player/Player.cs" id="1_3040n"]
@@ -26,7 +26,6 @@
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerWalkState.cs" id="22_7vqk1"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerIdleState.cs" id="23_cquva"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerJumpState.cs" id="24_46nr0"]
-[ext_resource type="Script" path="res://Scripts/Components/PlayerMovementComponent.cs" id="24_ttbo8"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerCrouchState.cs" id="26_gnjoo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fysra"]
@@ -289,12 +288,11 @@ _data = {
 "Run": SubResource("Animation_bexbt")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "animationPlayer", "AnimatedSprite2D", "MovementComponent")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "animationPlayer", "AnimatedSprite2D")]
 script = ExtResource("1_3040n")
 stateMachine = NodePath("StateMachine")
 animationPlayer = NodePath("AnimationPlayer")
 AnimatedSprite2D = NodePath("AnimatedSprite2D")
-MovementComponent = NodePath("Components/PlayerMovementComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fysra")
@@ -332,12 +330,6 @@ playerNormalShape = ExtResource("2_d58qw")
 playerCrouchShape = ExtResource("2_n1num")
 leftRaycast = NodePath("../../RayCastLeft")
 rightRaycast = NodePath("../../RayCastRight")
-
-[node name="Components" type="Node" parent="."]
-
-[node name="PlayerMovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("owner")]
-script = ExtResource("24_ttbo8")
-owner = NodePath("../..")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-7, 16)

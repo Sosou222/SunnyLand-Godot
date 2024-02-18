@@ -14,7 +14,7 @@ public partial class PlayerWalkState : PlayerMovementState
     {
         base.PhysicsUpdate(delta);
 
-        if (owner.MovementComponent.WantsToJump() || !owner.IsOnFloor())
+        if (WantsToJump() || !owner.IsOnFloor())
         {
             stateMachine.ChangeState(StateNames.Jump.ToString());
             return;

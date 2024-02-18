@@ -12,9 +12,6 @@ public partial class Unit : CharacterBody2D
     [Export]
     private AnimatedSprite2D AnimatedSprite2D;
 
-    [Export]
-    public MovementComponent MovementComponent { get; private set; }
-
     public override void _Ready()
     {
         stateMachine.Init(this);

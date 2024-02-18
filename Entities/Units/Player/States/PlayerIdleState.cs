@@ -18,7 +18,7 @@ public partial class PlayerIdleState : PlayerState
 
     public override void PhysicsUpdate(double delta)
     {
-        if (owner.MovementComponent.GetMovementDir().X != 0.0f)
+        if (GetInputVector().X != 0.0f)
         {
             stateMachine.ChangeState(StateNames.Walk.ToString());
             return;
@@ -30,7 +30,7 @@ public partial class PlayerIdleState : PlayerState
             return;
         }
 
-        if (owner.MovementComponent.WantsToJump())
+        if (WantsToJump())
         {
             stateMachine.ChangeState(StateNames.Jump.ToString());
             return;
