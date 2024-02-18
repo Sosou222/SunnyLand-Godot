@@ -338,3 +338,5 @@ target_position = Vector2(0, -21)
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(5, 16)
 target_position = Vector2(0, -21)
+
+[node name="Camera2D" type="Camera2D" parent="."]
