@@ -12,30 +12,33 @@ public partial class PlayerJumpState : PlayerMovementState
     public override void Enter()
     {
         GD.Print("Jump Unit Enter");
-        owner.animationPlayer.Play(animationJump);
+
         if (owner.IsOnFloor() && WantsToJump())
         {
             Jump();
+            owner.animationPlayer.Play(animationJump);
+            GD.Print("Jumping");
         }
         else
         {
+            owner.animationPlayer.Play(animationFall);
             GD.Print("Falling");
         }
     }
 
     private void Jump()
     {
-        GD.Print("Jumping");
         Vector2 velocity = owner.Velocity;
         velocity.Y = JumpVelocity;
         owner.Velocity = velocity;
+        GD.Print(velocity);
     }
 
     public override void PhysicsUpdate(double delta)
     {
         base.PhysicsUpdate(delta);
 
-        PlayJumpAnimation(velocity);
+        PlayJumpAnimation(velocity.Y);
 
         if (owner.IsOnFloor() && (Input.IsActionPressed("PlayerLeft") || Input.IsActionPressed("PlayerRight")))
         {
@@ -50,9 +53,10 @@ public partial class PlayerJumpState : PlayerMovementState
         }
     }
 
-    private void PlayJumpAnimation(Vector2 vel)
+    private void PlayJumpAnimation(float y)
     {
-        if (vel.Y < 0)
+
+        if (y < 0)
         {
             owner.animationPlayer.Play(animationJump);
         }
