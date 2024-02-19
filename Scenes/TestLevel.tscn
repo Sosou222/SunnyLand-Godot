@@ -442,7 +442,6 @@ sources/0 = SubResource("TileSetAtlasSource_jmjw7")
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-rotation = 0.00173869
 tile_set = SubResource("TileSet_rnbd5")
 format = 2
 layer_0/name = "Backround"
