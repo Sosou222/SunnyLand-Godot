@@ -290,6 +290,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "animationPlayer", "AnimatedSprite2D")]
+floor_max_angle = 0.698132
 floor_snap_length = 4.0
 script = ExtResource("1_3040n")
 stateMachine = NodePath("StateMachine")
