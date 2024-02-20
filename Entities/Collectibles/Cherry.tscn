@@ -150,7 +150,7 @@ shape = SubResource("CircleShape2D_wc6by")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_848pf")
-animation = &"Collected"
+animation = &"Idle"
 autoplay = "Idle"
 frame = 1
 

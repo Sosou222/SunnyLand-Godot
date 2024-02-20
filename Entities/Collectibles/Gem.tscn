@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddjl5bkbxgnd"]
+[gd_scene load_steps=17 format=3 uid="uid://ddjl5bkbxgnd"]
 
 [ext_resource type="Texture2D" uid="uid://dboqeer8m0bb3" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-1.png" id="1_34oix"]
 [ext_resource type="Texture2D" uid="uid://cmfocijnrdu50" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-1.png" id="1_elxx1"]
+[ext_resource type="Script" path="res://Scripts/Components/Collectible.cs" id="1_pvhsu"]
 [ext_resource type="Texture2D" uid="uid://bes2hua2xeb1q" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-2.png" id="2_ollp1"]
 [ext_resource type="Texture2D" uid="uid://ocu3ckjjwcit" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-2.png" id="2_rgfgp"]
 [ext_resource type="Texture2D" uid="uid://c4cnpvo8jq0gs" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-3.png" id="3_76psw"]
@@ -9,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://dnso8apogrjwx" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-4.png" id="4_5d2tv"]
 [ext_resource type="Texture2D" uid="uid://b12e8ml8svogy" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-4.png" id="4_cwjsr"]
 [ext_resource type="Texture2D" uid="uid://fd8qlalhvs5q" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-5.png" id="5_1gbqb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4thnt"]
+radius = 7.0
+height = 14.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3w3ai"]
 animations = [{
@@ -93,13 +98,48 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_qxtak"]
+resource_name = "PickUp"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Collected"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u52ik"]
 _data = {
 "Idle": SubResource("Animation_3b4v8"),
+"PickUp": SubResource("Animation_qxtak"),
 "RESET": SubResource("Animation_b3qjh")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_pvhsu")
+collectibleName = "Gem"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_4thnt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3w3ai")
@@ -112,3 +152,5 @@ libraries = {
 "": SubResource("AnimationLibrary_u52ik")
 }
 autoplay = "Idle"
+
+[connection signal="body_entered" from="." to="." method="OnBodyEnter"]
