@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://botlcavej1u7d"]
+
+[ext_resource type="Texture2D" uid="uid://dboqeer8m0bb3" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-1.png" id="1_dgudo"]
+[ext_resource type="Script" path="res://UI/CollectibleUI.cs" id="2_wcxrm"]
+
+[node name="GemUI" type="TextureRect"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_dgudo")
+script = ExtResource("2_wcxrm")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 4.0
+offset_right = 71.0
+offset_bottom = 27.0
+text = "x 0"
