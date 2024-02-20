@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://5tcbiib47tfq"]
+[gd_scene load_steps=19 format=3 uid="uid://5tcbiib47tfq"]
 
 [ext_resource type="Script" path="res://Scripts/Components/Collectible.cs" id="1_fy7tx"]
 [ext_resource type="Texture2D" uid="uid://cmfocijnrdu50" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-1.png" id="1_hgpix"]
@@ -106,9 +106,38 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_cbq2q"]
+resource_name = "PickUp"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Collected"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_blfbs"]
 _data = {
 "Idle": SubResource("Animation_fo6jr"),
+"PickUp": SubResource("Animation_cbq2q"),
 "RESET": SubResource("Animation_720ta")
 }
 
@@ -121,7 +150,7 @@ shape = SubResource("CircleShape2D_wc6by")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_848pf")
-animation = &"Idle"
+animation = &"Collected"
 autoplay = "Idle"
 frame = 1
 
