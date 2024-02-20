@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://5tcbiib47tfq"]
+[gd_scene load_steps=18 format=3 uid="uid://5tcbiib47tfq"]
 
+[ext_resource type="Script" path="res://Scripts/Components/Collectible.cs" id="1_fy7tx"]
 [ext_resource type="Texture2D" uid="uid://cmfocijnrdu50" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-1.png" id="1_hgpix"]
 [ext_resource type="Texture2D" uid="uid://bb44iqj4xxt51" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/cherry/cherry-1.png" id="1_p67wt"]
 [ext_resource type="Texture2D" uid="uid://bes2hua2xeb1q" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-2.png" id="2_oodfh"]
@@ -11,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://c104cwfkdw42t" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/cherry/cherry-5.png" id="5_g2gon"]
 [ext_resource type="Texture2D" uid="uid://owrx2yfevp3i" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/cherry/cherry-6.png" id="6_jrdlc"]
 [ext_resource type="Texture2D" uid="uid://bnvsrlnqq4qka" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/cherry/cherry-7.png" id="7_diuoj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wc6by"]
+radius = 8.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_848pf"]
 animations = [{
@@ -58,10 +62,71 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Cherry" type="Node2D"]
+[sub_resource type="Animation" id="Animation_fo6jr"]
+resource_name = "Idle"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_720ta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blfbs"]
+_data = {
+"Idle": SubResource("Animation_fo6jr"),
+"RESET": SubResource("Animation_720ta")
+}
+
+[node name="Cherry" type="Area2D"]
+script = ExtResource("1_fy7tx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wc6by")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_848pf")
-animation = &"Collected"
+animation = &"Idle"
+autoplay = "Idle"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_blfbs")
+}
+
+[connection signal="body_entered" from="." to="." method="OnBodyEnter"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://68aqmpcfxbai"]
+[gd_scene load_steps=6 format=3 uid="uid://68aqmpcfxbai"]
 
 [ext_resource type="Texture2D" uid="uid://cmpp5mjwb2gs1" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/tileset.png" id="1_24ka2"]
 [ext_resource type="PackedScene" uid="uid://blf8ofe3m4xsa" path="res://Entities/Units/Player/Player.tscn" id="2_cx0n8"]
+[ext_resource type="PackedScene" uid="uid://5tcbiib47tfq" path="res://Entities/Collectibles/Cherry.tscn" id="3_r47b0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmjw7"]
 texture = ExtResource("1_24ka2")
@@ -456,3 +457,8 @@ position = Vector2(95, 44)
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 drag_left_margin = 0.1
 editor_draw_screen = false
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Cherry" parent="Collectibles" instance=ExtResource("3_r47b0")]
+position = Vector2(263, 84)
