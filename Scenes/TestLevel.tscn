@@ -466,8 +466,32 @@ editor_draw_screen = false
 [node name="Cherry" parent="Collectibles" instance=ExtResource("3_r47b0")]
 position = Vector2(263, 84)
 
-[node name="Node2D" parent="." instance=ExtResource("4_wfrrb")]
-position = Vector2(180, 81)
+[node name="Cherry2" parent="Collectibles" instance=ExtResource("3_r47b0")]
+position = Vector2(324, 68)
+
+[node name="Cherry3" parent="Collectibles" instance=ExtResource("3_r47b0")]
+position = Vector2(469, 4)
+
+[node name="Cherry4" parent="Collectibles" instance=ExtResource("3_r47b0")]
+position = Vector2(679, 1)
+
+[node name="Cherry5" parent="Collectibles" instance=ExtResource("3_r47b0")]
+position = Vector2(879, 19)
+
+[node name="Gem" parent="Collectibles" instance=ExtResource("4_wfrrb")]
+position = Vector2(170, 76)
+
+[node name="Gem2" parent="Collectibles" instance=ExtResource("4_wfrrb")]
+position = Vector2(749, 31)
+
+[node name="Gem3" parent="Collectibles" instance=ExtResource("4_wfrrb")]
+position = Vector2(801, 30)
+
+[node name="Gem4" parent="Collectibles" instance=ExtResource("4_wfrrb")]
+position = Vector2(968, 2)
+
+[node name="Gem5" parent="Collectibles" instance=ExtResource("4_wfrrb")]
+position = Vector2(1097, 41)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
