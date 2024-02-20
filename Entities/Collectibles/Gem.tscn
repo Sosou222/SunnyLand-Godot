@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddjl5bkbxgnd"]
+
+[ext_resource type="Texture2D" uid="uid://dboqeer8m0bb3" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-1.png" id="1_34oix"]
+[ext_resource type="Texture2D" uid="uid://cmfocijnrdu50" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-1.png" id="1_elxx1"]
+[ext_resource type="Texture2D" uid="uid://bes2hua2xeb1q" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-2.png" id="2_ollp1"]
+[ext_resource type="Texture2D" uid="uid://ocu3ckjjwcit" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-2.png" id="2_rgfgp"]
+[ext_resource type="Texture2D" uid="uid://c4cnpvo8jq0gs" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-3.png" id="3_76psw"]
+[ext_resource type="Texture2D" uid="uid://cppl3gcxkcysn" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-3.png" id="3_xqmg2"]
+[ext_resource type="Texture2D" uid="uid://dnso8apogrjwx" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/item-feedback/item-feedback-4.png" id="4_5d2tv"]
+[ext_resource type="Texture2D" uid="uid://b12e8ml8svogy" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-4.png" id="4_cwjsr"]
+[ext_resource type="Texture2D" uid="uid://fd8qlalhvs5q" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-5.png" id="5_1gbqb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3w3ai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_elxx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ollp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_76psw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5d2tv")
+}],
+"loop": true,
+"name": &"Collected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_34oix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rgfgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xqmg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cwjsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1gbqb")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3w3ai")
+animation = &"Collected"
+frame = 3
+frame_progress = 0.297935
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
