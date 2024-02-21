@@ -1,0 +1,113 @@
+[gd_scene load_steps=19 format=3 uid="uid://b26s6483hqcrb"]
+
+[ext_resource type="Texture2D" uid="uid://blyjnkxqfyinm" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-2.png" id="1_0tt26"]
+[ext_resource type="Texture2D" uid="uid://ujfg0e7kamr1" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-1.png" id="1_3h5na"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/Enemy.cs" id="1_l0rxu"]
+[ext_resource type="Texture2D" uid="uid://bhl74xgtgpn7f" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-2.png" id="2_8vl7y"]
+[ext_resource type="Texture2D" uid="uid://dy7bihed4aqdy" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-3.png" id="2_xqs1a"]
+[ext_resource type="Texture2D" uid="uid://bxnjwvbbm5ue8" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-3.png" id="3_ukerg"]
+[ext_resource type="Texture2D" uid="uid://bfee3lngnatlv" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-4.png" id="4_6p2ld"]
+[ext_resource type="Texture2D" uid="uid://cf3bv64e1wrbw" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-5.png" id="5_katkg"]
+[ext_resource type="Texture2D" uid="uid://m8ir1a2l15nl" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-6.png" id="6_66xdj"]
+[ext_resource type="Texture2D" uid="uid://bj6y448k77170" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-1.png" id="9_svna4"]
+[ext_resource type="Texture2D" uid="uid://bwmpan8utlodu" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-4.png" id="10_aymgc"]
+[ext_resource type="Texture2D" uid="uid://dnd8t1aguu7mx" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-5.png" id="11_w172p"]
+[ext_resource type="Texture2D" uid="uid://bdxhlulwy3m00" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-6.png" id="12_1rkvj"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="13_2am7m"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemeyIdleState.cs" id="14_8i5lb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmwi"]
+size = Vector2(22, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmjm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3h5na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8vl7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ukerg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6p2ld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_katkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_66xdj")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0tt26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xqs1a")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_svna4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0tt26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xqs1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aymgc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w172p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1rkvj")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2we"]
+size = Vector2(328, 25)
+
+[node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "animationPlayer", "AnimatedSprite2D")]
+script = ExtResource("1_l0rxu")
+stateMachine = NodePath("StateMachine")
+animationPlayer = NodePath("AnimationPlayer")
+AnimatedSprite2D = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 11)
+shape = SubResource("RectangleShape2D_wdmwi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wmjm0")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("13_2am7m")
+initialState = "Idle"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("14_8i5lb")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_ak2we")
