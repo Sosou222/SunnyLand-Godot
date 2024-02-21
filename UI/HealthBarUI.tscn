@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2qpcwh3pm1kg"]
+
+[ext_resource type="Texture2D" uid="uid://d1uxptk8p2pm2" path="res://Sprites/PixelHeart/Pixel Heart Sprite Sheet 32x32.png" id="1_6mke0"]
+[ext_resource type="Script" path="res://UI/HealthBarUI.cs" id="1_0127d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad4di"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmhv4"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6gyp"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(64, 0, 32, 32)
+
+[node name="HealthBarUI" type="Control" node_paths=PackedStringArray("fullHeart", "halfHeart", "emptyHeart")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -268.0
+offset_bottom = -213.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0127d")
+fullHeart = NodePath("FullHeart")
+halfHeart = NodePath("HalfHeart")
+emptyHeart = NodePath("EmptyHeart")
+
+[node name="FullHeart" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_ad4di")
+
+[node name="HalfHeart" type="TextureRect" parent="."]
+visible = false
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_vmhv4")
+
+[node name="EmptyHeart" type="TextureRect" parent="."]
+visible = false
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_o6gyp")

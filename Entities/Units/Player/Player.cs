@@ -6,6 +6,9 @@ public partial class Player : Unit
     private int cherryCount = 0;
     private int gemCount = 0;
 
+    [Export]
+    public HealthComponent healthComponent { get; private set; }
+
     [Signal]
     public delegate void CherryCountChangeEventHandler(int newValue);
     [Signal]

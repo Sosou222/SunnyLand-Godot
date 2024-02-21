@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://blf8ofe3m4xsa"]
+[gd_scene load_steps=38 format=3 uid="uid://blf8ofe3m4xsa"]
 
 [ext_resource type="Texture2D" uid="uid://cg1aekn3qe8ku" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-1.png" id="1_7r47v"]
 [ext_resource type="Script" path="res://Entities/Units/Player/Player.cs" id="1_3040n"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerJumpState.cs" id="24_46nr0"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerCrouchState.cs" id="26_gnjoo"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerSprintState.cs" id="28_kkxsu"]
+[ext_resource type="Script" path="res://Scripts/Components/HealthComponent.cs" id="29_cut6w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fysra"]
 animations = [{
@@ -289,12 +290,13 @@ _data = {
 "Run": SubResource("Animation_bexbt")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "animationPlayer", "AnimatedSprite2D")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 collision_layer = 2
 collision_mask = 13
 floor_max_angle = 0.698132
 floor_snap_length = 4.0
 script = ExtResource("1_3040n")
+healthComponent = NodePath("HealthComponent")
 stateMachine = NodePath("StateMachine")
 animationPlayer = NodePath("AnimationPlayer")
 AnimatedSprite2D = NodePath("AnimatedSprite2D")
@@ -346,3 +348,8 @@ target_position = Vector2(0, -21)
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(5, 16)
 target_position = Vector2(0, -21)
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("29_cut6w")
+health = 4
+maxHealth = 4

@@ -1,12 +1,32 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class HealthComponent : Node
 {
-    [Export]
-    private int Health = 3;
-    [Export]
-    private int MaxHealth = 3;
+    [Export(PropertyHint.Range, "0,10,1")]
+    private int health = 6;
+    [Export(PropertyHint.Range, "0,10,1")]
+    private int maxHealth = 6;
+
+    public int Health
+    {
+        get { return health; }
+        private set { health = value; EmitSignal(SignalName.HealthChanged, health); }
+    }
+
+    public int MaxHealth
+    {
+        get { return maxHealth; }
+        private set { maxHealth = value; EmitSignal(SignalName.MaxHealthChanged, maxHealth); }
+    }
+
+
+    [Signal]
+    public delegate void MaxHealthChangedEventHandler(int newMaxHealth);
+
+    [Signal]
+    public delegate void HealthChangedEventHandler(int newHealth);
 
     [Signal]
     public delegate void TakenDamageEventHandler(int newHealth);
@@ -35,5 +55,9 @@ public partial class HealthComponent : Node
         Health = Mathf.Min(Health + heal, MaxHealth);
     }
 
+    public void AddMaxHealth(int value = 2)
+    {
+        MaxHealth += value;
+    }
 
 }
