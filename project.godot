@@ -35,6 +35,17 @@ window/stretch/mode="viewport"
 
 project/assembly_name="SunnyLand-Godot"
 
+[file_customization]
+
+folder_colors={
+"res://Entities/": "red",
+"res://Entities/Collectibles/": "purple",
+"res://Scenes/": "orange",
+"res://Scripts/": "blue",
+"res://Sprites/": "yellow",
+"res://UI/": "teal"
+}
+
 [input]
 
 PlayerLeft={
