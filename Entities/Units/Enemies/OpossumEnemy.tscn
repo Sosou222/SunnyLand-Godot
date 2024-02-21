@@ -83,6 +83,8 @@ animations = [{
 size = Vector2(328, 25)
 
 [node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("toPlayerRaycast", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_l0rxu")
 toPlayerRaycast = NodePath("ToPlayerRaycast")
 stateMachine = NodePath("StateMachine")
