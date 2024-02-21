@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b26s6483hqcrb"]
+[gd_scene load_steps=25 format=3 uid="uid://b26s6483hqcrb"]
 
 [ext_resource type="Texture2D" uid="uid://blyjnkxqfyinm" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-2.png" id="1_0tt26"]
 [ext_resource type="Texture2D" uid="uid://ujfg0e7kamr1" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-1.png" id="1_3h5na"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bdxhlulwy3m00" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-6.png" id="12_1rkvj"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="13_2am7m"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemeyIdleState.cs" id="14_8i5lb"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyPursuit.cs" id="16_olasw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmwi"]
 size = Vector2(22, 6)
@@ -79,6 +80,115 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_ub4do"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_116th"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_tmp7f"]
+resource_name = "Pursuit"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_dbewx"]
+resource_name = "Death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b4cii"]
+_data = {
+"Death": SubResource("Animation_dbewx"),
+"Idle": SubResource("Animation_ub4do"),
+"Pursuit": SubResource("Animation_tmp7f"),
+"RESET": SubResource("Animation_116th")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2we"]
 size = Vector2(328, 86)
 
@@ -99,8 +209,13 @@ shape = SubResource("RectangleShape2D_wdmwi")
 sprite_frames = SubResource("SpriteFrames_wmjm0")
 animation = &"Idle"
 autoplay = "Idle"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b4cii")
+}
+autoplay = "Idle"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("13_2am7m")
@@ -108,6 +223,9 @@ initialState = "Idle"
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("14_8i5lb")
+
+[node name="Pursuit" type="Node" parent="StateMachine"]
+script = ExtResource("16_olasw")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 collision_layer = 0

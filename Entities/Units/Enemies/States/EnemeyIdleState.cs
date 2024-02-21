@@ -4,9 +4,14 @@ using System;
 [GlobalClass]
 public partial class EnemeyIdleState : EnemyState
 {
+    [Export]
+    private string idleAnimation = "Idle";
     public override void Enter()
     {
+        owner.animationPlayer.Play(idleAnimation);
         GD.Print($"{owner.Name} idle state");
+
+        owner.Velocity = Vector2.Zero;
     }
 
     public override void PhysicsUpdate(double delta)
@@ -15,5 +20,10 @@ public partial class EnemeyIdleState : EnemyState
 
         owner.Velocity = vel;
         owner.MoveAndSlide();
+
+        if (owner.IsPlayerInSight())
+        {
+            stateMachine.ChangeState("Pursuit");
+        }
     }
 }

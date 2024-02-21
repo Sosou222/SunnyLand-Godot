@@ -6,6 +6,8 @@ public partial class Enemy : Unit
     [Export]
     private RayCast2D toPlayerRaycast;
 
+    private bool shouldForget = false;
+
     private Player player = null;
     private void OnBodyEntered(Node2D node)
     {
@@ -25,20 +27,19 @@ public partial class Enemy : Unit
         }
     }
 
-    public override void _PhysicsProcess(double delta)
-    {
-        base._PhysicsProcess(delta);
-
-        if (player == null)
-            return;
-
-        IsPlayerInSight();
-    }
-
     public bool IsPlayerInSight()
     {
+        if (player == null)
+            return false;
         toPlayerRaycast.TargetPosition = toPlayerRaycast.ToLocal(player.GlobalPosition);
         toPlayerRaycast.ForceRaycastUpdate();
         return !toPlayerRaycast.IsColliding();
+    }
+
+    public Vector2 GetDirToPlayer()
+    {
+        if (player == null)
+            return Vector2.Zero;
+        return (player.GlobalPosition - GlobalPosition).Normalized();
     }
 }
