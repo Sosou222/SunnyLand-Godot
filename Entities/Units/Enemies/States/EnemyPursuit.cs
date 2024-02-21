@@ -22,15 +22,17 @@ public partial class EnemyPursuit : EnemyState
         if (owner.IsPlayerInSight())
         {
             Vector2 dir = owner.GetDirToPlayer();
-            vel.X = Speed * dir.X;
-            if (vel.X < 0.0f)
+            float dirx = 1.0f;
+            if (dir.X < 0.0f)
             {
+                dirx = -1.0f;
                 owner.FlipH(false);
             }
             else
             {
                 owner.FlipH(true);
             }
+            vel.X = Speed * dirx;
             isInSight = true;
         }
 
