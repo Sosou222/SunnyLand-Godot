@@ -80,7 +80,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2we"]
-size = Vector2(328, 25)
+size = Vector2(328, 86)
 
 [node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("toPlayerRaycast", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 collision_layer = 4
@@ -110,9 +110,11 @@ initialState = "Idle"
 script = ExtResource("14_8i5lb")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(0, 2.5)
+position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_ak2we")
 
 [node name="ToPlayerRaycast" type="RayCast2D" parent="."]

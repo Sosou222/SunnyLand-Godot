@@ -468,6 +468,9 @@ editor_draw_screen = false
 [node name="OpossumEnemy" parent="Enemies" instance=ExtResource("7_sr20f")]
 position = Vector2(222, 57)
 
+[node name="OpossumEnemy2" parent="Enemies" instance=ExtResource("7_sr20f")]
+position = Vector2(681, 61)
+
 [node name="Collectibles" type="Node" parent="."]
 
 [node name="Cherry" parent="Collectibles" instance=ExtResource("3_r47b0")]

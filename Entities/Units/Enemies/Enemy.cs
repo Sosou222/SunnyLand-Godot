@@ -25,19 +25,20 @@ public partial class Enemy : Unit
         }
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
-        base._Process(delta);
+        base._PhysicsProcess(delta);
 
         if (player == null)
             return;
 
-        GD.Print(IsPlayerInSight());
+        IsPlayerInSight();
     }
 
     public bool IsPlayerInSight()
     {
-        toPlayerRaycast.TargetPosition = player.GlobalPosition;
+        toPlayerRaycast.TargetPosition = toPlayerRaycast.ToLocal(player.GlobalPosition);
+        toPlayerRaycast.ForceRaycastUpdate();
         return !toPlayerRaycast.IsColliding();
     }
 }
