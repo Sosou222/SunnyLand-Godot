@@ -82,8 +82,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2we"]
 size = Vector2(328, 25)
 
-[node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "animationPlayer", "AnimatedSprite2D")]
+[node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("toPlayerRaycast", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 script = ExtResource("1_l0rxu")
+toPlayerRaycast = NodePath("ToPlayerRaycast")
 stateMachine = NodePath("StateMachine")
 animationPlayer = NodePath("AnimationPlayer")
 AnimatedSprite2D = NodePath("AnimatedSprite2D")
@@ -111,3 +112,8 @@ script = ExtResource("14_8i5lb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_ak2we")
+
+[node name="ToPlayerRaycast" type="RayCast2D" parent="."]
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="OnBodyExit"]
