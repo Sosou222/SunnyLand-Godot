@@ -23,6 +23,14 @@ public partial class EnemyPursuit : EnemyState
         {
             Vector2 dir = owner.GetDirToPlayer();
             vel.X = Speed * dir.X;
+            if (vel.X < 0.0f)
+            {
+                owner.FlipH(false);
+            }
+            else
+            {
+                owner.FlipH(true);
+            }
             isInSight = true;
         }
 
