@@ -29,22 +29,4 @@ public partial class Player : Unit
             GD.Print($"Gem count:{gemCount}");
         }
     }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        if (Input.IsActionJustReleased("PlayerRight"))
-        {
-            healthComponent.TakeDamage();
-        }
-        if (Input.IsActionJustReleased("PlayerLeft"))
-        {
-            healthComponent.Heal();
-        }
-        if (Input.IsActionJustReleased("PlayerJump"))
-        {
-            healthComponent.AddMaxHealth();
-        }
-    }
 }
