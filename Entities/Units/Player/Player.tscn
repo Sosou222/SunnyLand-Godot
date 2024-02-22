@@ -353,4 +353,3 @@ target_position = Vector2(0, -21)
 script = ExtResource("29_cut6w")
 health = 3
 maxHealth = 8
-SetHealthToMaxAtBegin = false
