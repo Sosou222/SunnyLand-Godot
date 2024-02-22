@@ -1,21 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2qpcwh3pm1kg"]
+[gd_scene load_steps=13 format=3 uid="uid://b2qpcwh3pm1kg"]
 
 [ext_resource type="Texture2D" uid="uid://d1uxptk8p2pm2" path="res://Sprites/PixelHeart/Pixel Heart Sprite Sheet 32x32.png" id="1_6mke0"]
 [ext_resource type="Script" path="res://UI/HealthBarUI.cs" id="1_0127d"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ad4di"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4b5i"]
 atlas = ExtResource("1_6mke0")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vmhv4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a27yw"]
 atlas = ExtResource("1_6mke0")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6gyp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff3wg"]
 atlas = ExtResource("1_6mke0")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
-[node name="HealthBarUI" type="Control" node_paths=PackedStringArray("fullHeart", "halfHeart", "emptyHeart")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_stfdi"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87yyb"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh2a8"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v3hc"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24jws"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lncgg"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mqy4"]
+atlas = ExtResource("1_6mke0")
+region = Rect2(0, 0, 32, 32)
+
+[node name="HealthBarUI" type="Control" node_paths=PackedStringArray("heartArray")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,25 +53,67 @@ offset_bottom = -213.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0127d")
-fullHeart = NodePath("FullHeart")
-halfHeart = NodePath("HalfHeart")
-emptyHeart = NodePath("EmptyHeart")
+heartArray = [NodePath("Heart"), NodePath("Heart2"), NodePath("Heart3"), NodePath("Heart4"), NodePath("Heart5"), NodePath("Heart6"), NodePath("Heart7"), NodePath("Heart8"), NodePath("Heart9"), NodePath("Heart10")]
 
-[node name="FullHeart" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
+[node name="Heart" type="TextureRect" parent="."]
 offset_right = 32.0
 offset_bottom = 32.0
-texture = SubResource("AtlasTexture_ad4di")
+texture = SubResource("AtlasTexture_b4b5i")
 
-[node name="HalfHeart" type="TextureRect" parent="."]
-visible = false
-offset_right = 32.0
+[node name="Heart2" type="TextureRect" parent="."]
+offset_left = 32.0
+offset_right = 64.0
 offset_bottom = 32.0
-texture = SubResource("AtlasTexture_vmhv4")
+texture = SubResource("AtlasTexture_a27yw")
 
-[node name="EmptyHeart" type="TextureRect" parent="."]
-visible = false
-offset_right = 32.0
+[node name="Heart3" type="TextureRect" parent="."]
+offset_left = 64.0
+offset_right = 96.0
 offset_bottom = 32.0
-texture = SubResource("AtlasTexture_o6gyp")
+texture = SubResource("AtlasTexture_ff3wg")
+
+[node name="Heart4" type="TextureRect" parent="."]
+offset_left = 96.0
+offset_right = 128.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_stfdi")
+
+[node name="Heart5" type="TextureRect" parent="."]
+offset_left = 128.0
+offset_right = 160.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_87yyb")
+
+[node name="Heart6" type="TextureRect" parent="."]
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_lh2a8")
+
+[node name="Heart7" type="TextureRect" parent="."]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_2v3hc")
+
+[node name="Heart8" type="TextureRect" parent="."]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_24jws")
+
+[node name="Heart9" type="TextureRect" parent="."]
+offset_left = 96.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_lncgg")
+
+[node name="Heart10" type="TextureRect" parent="."]
+offset_left = 128.0
+offset_top = 32.0
+offset_right = 160.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_4mqy4")

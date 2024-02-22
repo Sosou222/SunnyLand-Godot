@@ -4,11 +4,14 @@ using System;
 [GlobalClass]
 public partial class HealthComponent : Node
 {
-    [Export(PropertyHint.Range, "0,10,1")]
+    [Export(PropertyHint.Range, "0,20,1")]
     private int health = 6;
-    [Export(PropertyHint.Range, "0,10,1")]
+    [Export(PropertyHint.Range, "0,20,1")]
     private int maxHealth = 6;
-
+    [Export(PropertyHint.Range, "0,100,1")]
+    private int maxHealthHardCap = 20;
+    [Export]
+    private bool SetHealthToMaxAtBegin = true;
     public int Health
     {
         get { return health; }
@@ -36,7 +39,8 @@ public partial class HealthComponent : Node
 
     public override void _Ready()
     {
-        Health = MaxHealth;
+        if (SetHealthToMaxAtBegin)
+            Health = MaxHealth;
     }
 
 
@@ -57,7 +61,7 @@ public partial class HealthComponent : Node
 
     public void AddMaxHealth(int value = 2)
     {
-        MaxHealth += value;
+        MaxHealth = Math.Min(maxHealth + value, maxHealthHardCap);
     }
 
 }

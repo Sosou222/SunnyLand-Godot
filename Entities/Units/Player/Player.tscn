@@ -351,5 +351,6 @@ target_position = Vector2(0, -21)
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("29_cut6w")
-health = 4
-maxHealth = 4
+health = 3
+maxHealth = 8
+SetHealthToMaxAtBegin = false
