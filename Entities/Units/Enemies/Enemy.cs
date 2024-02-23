@@ -27,6 +27,19 @@ public partial class Enemy : Unit
         }
     }
 
+    private void OnHitboxEnter(Node2D node)
+    {
+        GD.Print("Hitbox entered");
+        if (node is Player p)
+        {
+            GD.Print("Player hitboxed");
+
+            GetNode<Area2D>("HitBox").SetDeferred("monitoring", false);
+            p.Jump();
+            stateMachine.ChangeState("Death");
+        }
+    }
+
     public bool IsPlayerInSight()
     {
         if (player == null)

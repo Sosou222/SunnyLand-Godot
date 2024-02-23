@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b26s6483hqcrb"]
+[gd_scene load_steps=27 format=3 uid="uid://b26s6483hqcrb"]
 
 [ext_resource type="Texture2D" uid="uid://blyjnkxqfyinm" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-2.png" id="1_0tt26"]
 [ext_resource type="Texture2D" uid="uid://ujfg0e7kamr1" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-1.png" id="1_3h5na"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="13_2am7m"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemeyIdleState.cs" id="14_8i5lb"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyPursuit.cs" id="16_olasw"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyDeathState.cs" id="17_xem2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmwi"]
 size = Vector2(22, 6)
@@ -192,6 +193,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2we"]
 size = Vector2(328, 86)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_podqq"]
+size = Vector2(20, 10)
+
 [node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("toPlayerRaycast", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 collision_layer = 4
 collision_mask = 3
@@ -229,7 +233,11 @@ script = ExtResource("14_8i5lb")
 [node name="Pursuit" type="Node" parent="StateMachine"]
 script = ExtResource("16_olasw")
 
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("17_xem2y")
+
 [node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -237,7 +245,14 @@ collision_mask = 2
 position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_ak2we")
 
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-3, 3)
+shape = SubResource("RectangleShape2D_podqq")
+
 [node name="ToPlayerRaycast" type="RayCast2D" parent="."]
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="OnBodyEntered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="OnBodyExit"]
+[connection signal="body_entered" from="HitBox" to="." method="OnHitboxEnter"]

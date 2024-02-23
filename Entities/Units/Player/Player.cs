@@ -29,4 +29,9 @@ public partial class Player : Unit
             GD.Print($"Gem count:{gemCount}");
         }
     }
+
+    public void Jump()
+    {
+        stateMachine.ChangeState(PlayerState.StateNames.Jump.ToString());
+    }
 }
