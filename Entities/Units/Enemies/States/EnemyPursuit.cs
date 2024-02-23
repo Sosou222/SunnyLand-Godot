@@ -8,33 +8,51 @@ public partial class EnemyPursuit : EnemyState
     private string pursitAniamtion = "Pursuit";
 
     protected static float Speed = 100.0f;
+
+    private const double dirChangeCooldownMax = 0.3f;
+    private double dirChangeCooldown = 0.0f;
+
+    private float dirX = 0.0f;
     public override void Enter()
     {
         owner.animationPlayer.Play(pursitAniamtion);
         GD.Print($"{owner.Name} pursuit state");
+
+        dirX = 0.0f;
+        dirChangeCooldown = 0.0f;
     }
 
     public override void PhysicsUpdate(double delta)
     {
         Vector2 vel = CalculateGravity(owner.Velocity, delta);
-
-        bool isInSight = false;
-        if (owner.IsPlayerInSight())
+        dirChangeCooldown -= delta;
+        bool isInSight = true;
+        if (dirChangeCooldown <= 0)
         {
-            Vector2 dir = owner.GetDirToPlayer();
-            float dirx = 1.0f;
-            if (dir.X < 0.0f)
+            dirChangeCooldown = dirChangeCooldownMax;
+            if (owner.IsPlayerInSight())
             {
-                dirx = -1.0f;
-                owner.FlipH(false);
+                Vector2 direction = owner.GetDirToPlayer();
+
+                if (direction.X < 0.0f)
+                {
+                    dirX = -1.0f;
+                    owner.FlipH(false);
+                }
+                else
+                {
+                    dirX = 1.0f;
+                    owner.FlipH(true);
+                }
             }
             else
             {
-                owner.FlipH(true);
+                isInSight = false;
             }
-            vel.X = Speed * dirx;
-            isInSight = true;
+
         }
+        vel.X = Speed * dirX;
+
 
         owner.Velocity = vel;
         owner.MoveAndSlide();

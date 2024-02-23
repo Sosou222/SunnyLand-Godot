@@ -56,41 +56,48 @@ script = ExtResource("1_0127d")
 heartArray = [NodePath("Heart"), NodePath("Heart2"), NodePath("Heart3"), NodePath("Heart4"), NodePath("Heart5"), NodePath("Heart6"), NodePath("Heart7"), NodePath("Heart8"), NodePath("Heart9"), NodePath("Heart10")]
 
 [node name="Heart" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("AtlasTexture_b4b5i")
 
 [node name="Heart2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 32.0
 offset_right = 64.0
 offset_bottom = 32.0
 texture = SubResource("AtlasTexture_a27yw")
 
 [node name="Heart3" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 64.0
 offset_right = 96.0
 offset_bottom = 32.0
 texture = SubResource("AtlasTexture_ff3wg")
 
 [node name="Heart4" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 96.0
 offset_right = 128.0
 offset_bottom = 32.0
 texture = SubResource("AtlasTexture_stfdi")
 
 [node name="Heart5" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 128.0
 offset_right = 160.0
 offset_bottom = 32.0
 texture = SubResource("AtlasTexture_87yyb")
 
 [node name="Heart6" type="TextureRect" parent="."]
+layout_mode = 0
 offset_top = 32.0
 offset_right = 32.0
 offset_bottom = 64.0
 texture = SubResource("AtlasTexture_lh2a8")
 
 [node name="Heart7" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 64.0
@@ -98,6 +105,7 @@ offset_bottom = 64.0
 texture = SubResource("AtlasTexture_2v3hc")
 
 [node name="Heart8" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 32.0
 offset_right = 96.0
@@ -105,6 +113,7 @@ offset_bottom = 64.0
 texture = SubResource("AtlasTexture_24jws")
 
 [node name="Heart9" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 96.0
 offset_top = 32.0
 offset_right = 128.0
@@ -112,6 +121,7 @@ offset_bottom = 64.0
 texture = SubResource("AtlasTexture_lncgg")
 
 [node name="Heart10" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 128.0
 offset_top = 32.0
 offset_right = 160.0
