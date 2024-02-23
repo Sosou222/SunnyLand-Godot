@@ -6,24 +6,12 @@ public partial class PlayerJumpState : PlayerMovementState
 {
     [Export]
     private string animationJump = "Jump";
-    [Export]
-    private string animationFall = "Fall";
 
     public override void Enter()
     {
         GD.Print("Jump Unit Enter");
-
-        if (owner.IsOnFloor() && WantsToJump())
-        {
-            Jump();
-            owner.animationPlayer.Play(animationJump);
-            GD.Print("Jumping");
-        }
-        else
-        {
-            owner.animationPlayer.Play(animationFall);
-            GD.Print("Falling");
-        }
+        owner.animationPlayer.Play(animationJump);
+        Jump();
     }
 
     private void Jump()
@@ -38,31 +26,10 @@ public partial class PlayerJumpState : PlayerMovementState
     {
         base.PhysicsUpdate(delta);
 
-        PlayJumpAnimation(velocity.Y);
-
-        if (owner.IsOnFloor() && (Input.IsActionPressed("PlayerLeft") || Input.IsActionPressed("PlayerRight")))
+        if (velocity.Y > 0.0f)
         {
-            stateMachine.ChangeState(StateNames.Walk.ToString());
+            stateMachine.ChangeState(StateNames.Fall.ToString());
             return;
-        }
-
-        if (owner.IsOnFloor())
-        {
-            stateMachine.ChangeState(StateNames.Idle.ToString());
-            return;
-        }
-    }
-
-    private void PlayJumpAnimation(float y)
-    {
-
-        if (y < 0)
-        {
-            owner.animationPlayer.Play(animationJump);
-        }
-        else
-        {
-            owner.animationPlayer.Play(animationFall);
         }
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://blf8ofe3m4xsa"]
+[gd_scene load_steps=39 format=3 uid="uid://blf8ofe3m4xsa"]
 
 [ext_resource type="Texture2D" uid="uid://cg1aekn3qe8ku" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-1.png" id="1_7r47v"]
 [ext_resource type="Script" path="res://Entities/Units/Player/Player.cs" id="1_3040n"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerJumpState.cs" id="24_46nr0"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerCrouchState.cs" id="26_gnjoo"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerSprintState.cs" id="28_kkxsu"]
+[ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerFallState.cs" id="29_1slbt"]
 [ext_resource type="Script" path="res://Scripts/Components/HealthComponent.cs" id="29_cut6w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fysra"]
@@ -303,7 +304,7 @@ AnimatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fysra")
-animation = &"Idle"
+animation = &"Crouch"
 autoplay = "Idle"
 frame = 1
 
@@ -319,7 +320,7 @@ autoplay = "Idle"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("21_oa51p")
-initialState = "Jump"
+initialState = "Fall"
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("22_7vqk1")
@@ -340,6 +341,9 @@ rightRaycast = NodePath("../../RayCastRight")
 
 [node name="Sprint" type="Node" parent="StateMachine"]
 script = ExtResource("28_kkxsu")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("29_1slbt")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-7, 16)
