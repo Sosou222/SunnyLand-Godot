@@ -16,9 +16,15 @@ public partial class PlayerSprintState : PlayerMovementState
     {
         base.PhysicsUpdate(delta);
 
-        if (WantsToJump() || !owner.IsOnFloor())
+        if (WantsToJump() && owner.IsOnFloor())
         {
             stateMachine.ChangeState(StateNames.Jump.ToString());
+            return;
+        }
+
+        if (!owner.IsOnFloor())
+        {
+            stateMachine.ChangeState(StateNames.Fall.ToString());
             return;
         }
 
