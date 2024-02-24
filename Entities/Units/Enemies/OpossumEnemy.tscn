@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b26s6483hqcrb"]
+[gd_scene load_steps=28 format=3 uid="uid://b26s6483hqcrb"]
 
 [ext_resource type="Texture2D" uid="uid://blyjnkxqfyinm" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-2.png" id="1_0tt26"]
 [ext_resource type="Texture2D" uid="uid://ujfg0e7kamr1" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-1.png" id="1_3h5na"]
@@ -196,6 +196,9 @@ size = Vector2(328, 107)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_podqq"]
 size = Vector2(20, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v5cu"]
+size = Vector2(18, 10)
+
 [node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("toPlayerRaycast", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 collision_layer = 4
 floor_max_angle = 0.698132
@@ -254,8 +257,18 @@ position = Vector2(-3, 3)
 shape = SubResource("RectangleShape2D_podqq")
 debug_color = Color(0.663927, 0.364656, 0.909418, 0.42)
 
+[node name="PlayerHurt" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurt"]
+position = Vector2(-3, 9)
+shape = SubResource("RectangleShape2D_4v5cu")
+
 [node name="ToPlayerRaycast" type="RayCast2D" parent="."]
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="OnBodyEntered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="OnBodyExit"]
 [connection signal="body_entered" from="HitBox" to="." method="OnHitboxEnter"]
+[connection signal="body_entered" from="PlayerHurt" to="." method="OnHurtBoxEnter"]
+[connection signal="body_exited" from="PlayerHurt" to="." method="OnHurtBoxExit"]
