@@ -32,15 +32,11 @@ public partial class Enemy : Unit
 
     private void OnHitboxEnter(Node2D node)
     {
-        GD.Print("Hitbox entered");
         if (node is Player p)
         {
-            GD.Print("Player hitboxed");
-
             var posHit = GetNode<Area2D>("HitBox").GlobalPosition;
             var posPlayer = player.GlobalPosition;
             var normal = (posHit - posPlayer).Normalized();
-            GD.Print($"Normal:{normal}");
             if (normal.Y > stompThreshhold)
             {
                 GetNode<Area2D>("HitBox").SetDeferred("monitoring", false);
