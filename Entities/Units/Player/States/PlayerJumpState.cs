@@ -19,7 +19,6 @@ public partial class PlayerJumpState : PlayerMovementState
         Vector2 velocity = owner.Velocity;
         velocity.Y = JumpVelocity;
         owner.Velocity = velocity;
-        GD.Print(velocity);
     }
 
     public override void PhysicsUpdate(double delta)
