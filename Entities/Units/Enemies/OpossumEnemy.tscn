@@ -198,7 +198,6 @@ size = Vector2(20, 10)
 
 [node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("toPlayerRaycast", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 collision_layer = 4
-collision_mask = 3
 floor_max_angle = 0.698132
 floor_snap_length = 4.0
 script = ExtResource("1_l0rxu")

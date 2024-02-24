@@ -293,7 +293,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthComponent", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 9
 floor_max_angle = 0.698132
 floor_snap_length = 4.0
 script = ExtResource("1_3040n")
