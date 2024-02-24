@@ -191,7 +191,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2we"]
-size = Vector2(328, 86)
+size = Vector2(328, 107)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_podqq"]
 size = Vector2(20, 10)
@@ -237,12 +237,11 @@ script = ExtResource("16_olasw")
 script = ExtResource("17_xem2y")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(0, -28)
+position = Vector2(0, -17.5)
 shape = SubResource("RectangleShape2D_ak2we")
 
 [node name="HitBox" type="Area2D" parent="."]
