@@ -8,6 +8,9 @@ public partial class Enemy : Unit
 
     private bool shouldForget = false;
 
+    //from 0 to 1.0 but probably somenthing more like 0.99 ~ 0.98
+    private float stompThreshhold = 0.5f;
+
     private Player player = null;
     private void OnBodyEntered(Node2D node)
     {
@@ -34,9 +37,17 @@ public partial class Enemy : Unit
         {
             GD.Print("Player hitboxed");
 
-            GetNode<Area2D>("HitBox").SetDeferred("monitoring", false);
-            p.Jump();
-            stateMachine.ChangeState("Death");
+            var posHit = GetNode<Area2D>("HitBox").GlobalPosition;
+            var posPlayer = player.GlobalPosition;
+            var normal = (posHit - posPlayer).Normalized();
+            GD.Print($"Normal:{normal}");
+            if (normal.Y > stompThreshhold)
+            {
+                GetNode<Area2D>("HitBox").SetDeferred("monitoring", false);
+                p.Jump();
+                stateMachine.ChangeState("Death");
+            }
+
         }
     }
 

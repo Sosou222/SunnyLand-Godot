@@ -462,7 +462,7 @@ layer_2/name = "Foreground"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("2_cx0n8")]
-position = Vector2(20, 59)
+position = Vector2(16, 70)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 drag_left_margin = 0.1
@@ -511,16 +511,19 @@ position = Vector2(1097, 41)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CherryUI" parent="CanvasLayer" instance=ExtResource("5_edseh")]
+visible = false
 offset_left = 420.0
 offset_right = 452.0
 
 [node name="GemUI" parent="CanvasLayer" instance=ExtResource("6_v6g0t")]
+visible = false
 offset_left = 420.0
 offset_top = 32.0
 offset_right = 452.0
 offset_bottom = 64.0
 
 [node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("8_phwuf")]
+visible = false
 player = NodePath("../../Player")
 
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]

@@ -32,8 +32,6 @@ public partial class Player : Unit
 
     public void Jump()
     {
-        if (stateMachine.CurrentStateName == PlayerState.StateNames.Jump.ToString())
-            stateMachine.ChangeState(PlayerState.StateNames.Fall.ToString());
         stateMachine.ChangeState(PlayerState.StateNames.Jump.ToString());
     }
 }
