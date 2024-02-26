@@ -13,7 +13,8 @@ public abstract partial class PlayerState : BaseState
         Jump,
         Crouch,
         Sprint,
-        Fall
+        Fall,
+        Hurt
     }
 
     public override bool Init<T>(T owner)

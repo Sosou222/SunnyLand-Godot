@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class PlayerHurtComponent : Node
+public partial class PlayerHurtComponent : Area2D
 {
     [Export]
     private StateMachine stateMachine;
@@ -12,7 +12,7 @@ public partial class PlayerHurtComponent : Node
     {
         if (player != null)
         {
-            player.Hurt();
+            player.Hurt(GetDirXToPlayer() > 0.0f ? false : true);
         }
     }
 
@@ -35,5 +35,12 @@ public partial class PlayerHurtComponent : Node
             GD.Print("Hurt box exit");
             player = null;
         }
+    }
+
+    private float GetDirXToPlayer()
+    {
+        if (player == null)
+            return 0.0f;
+        return (player.GlobalPosition - GlobalPosition).Normalized().X;
     }
 }

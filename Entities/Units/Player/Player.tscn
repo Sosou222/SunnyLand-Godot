@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://blf8ofe3m4xsa"]
+[gd_scene load_steps=41 format=3 uid="uid://blf8ofe3m4xsa"]
 
 [ext_resource type="Texture2D" uid="uid://cg1aekn3qe8ku" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-1.png" id="1_7r47v"]
 [ext_resource type="Script" path="res://Entities/Units/Player/Player.cs" id="1_3040n"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerSprintState.cs" id="28_kkxsu"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerFallState.cs" id="29_1slbt"]
 [ext_resource type="Script" path="res://Scripts/Components/HealthComponent.cs" id="29_cut6w"]
+[ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerHurtState.cs" id="30_bywtj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fysra"]
 animations = [{
@@ -281,10 +282,40 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_0ejh1"]
+resource_name = "Hurt"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Hurt"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28kre"]
 _data = {
 "Crouch": SubResource("Animation_1fckd"),
 "Fall": SubResource("Animation_xnd83"),
+"Hurt": SubResource("Animation_0ejh1"),
 "Idle": SubResource("Animation_wkb8w"),
 "Jump": SubResource("Animation_dqywn"),
 "RESET": SubResource("Animation_ncwi1"),
@@ -304,7 +335,7 @@ AnimatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fysra")
-animation = &"Crouch"
+animation = &"Idle"
 autoplay = "Idle"
 frame = 1
 
@@ -344,6 +375,9 @@ script = ExtResource("28_kkxsu")
 
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("29_1slbt")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("30_bywtj")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-7, 16)
