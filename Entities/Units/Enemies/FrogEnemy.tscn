@@ -134,6 +134,30 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_2y6vj"]
 resource_name = "Pursuit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_psoog"]
 length = 0.001
@@ -170,12 +194,17 @@ radius = 195.01
 [sub_resource type="CircleShape2D" id="CircleShape2D_7720t"]
 radius = 6.08276
 
-[node name="FrogEnemy" type="CharacterBody2D"]
+[node name="FrogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("pdc", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
+collision_layer = 4
 script = ExtResource("1_ew8da")
+pdc = NodePath("PlayerDetectionComponent")
+stateMachine = NodePath("StateMachine")
+animationPlayer = NodePath("AnimationPlayer")
+AnimatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_df5ut")
-animation = &"Death"
+animation = &"Idle"
 autoplay = "Idle"
 frame = 2
 
@@ -203,6 +232,8 @@ script = ExtResource("16_bl4pv")
 script = ExtResource("17_tm666")
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("15_flbf5")]
+visible = false
+stompThreshhold = 0.65
 stateMachine = NodePath("../StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
@@ -210,6 +241,7 @@ position = Vector2(-2, -2)
 shape = SubResource("CircleShape2D_mnrim")
 
 [node name="PlayerDetectionComponent" parent="." node_paths=PackedStringArray("toPlayerRaycast", "owner") instance=ExtResource("16_u2pf2")]
+visible = false
 toPlayerRaycast = NodePath("../ToPlayerRaycast")
 owner = NodePath("..")
 
@@ -217,6 +249,7 @@ owner = NodePath("..")
 shape = SubResource("CircleShape2D_7bysu")
 
 [node name="PlayerHurtComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("17_aat6j")]
+visible = false
 stateMachine = NodePath("../StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtComponent"]
