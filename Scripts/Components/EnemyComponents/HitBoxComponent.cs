@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[GlobalClass]
 public partial class HitBoxComponent : Area2D
 {
 	[Export(PropertyHint.Range, "0.0,1.0,0.01")]

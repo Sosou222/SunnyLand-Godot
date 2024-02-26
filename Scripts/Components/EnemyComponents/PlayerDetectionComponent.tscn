@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://7v2e40u7vp7j"]
 
-[ext_resource type="Script" path="res://Scripts/Components/PlayerDetectionComponent.cs" id="1_y35ad"]
+[ext_resource type="Script" path="res://Scripts/Components/EnemyComponents/PlayerDetectionComponent.cs" id="1_y35ad"]
 
 [node name="PlayerDetectionComponent" type="Area2D"]
 collision_layer = 0

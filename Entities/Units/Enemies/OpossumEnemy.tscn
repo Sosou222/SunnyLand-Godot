@@ -17,9 +17,9 @@
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemeyIdleState.cs" id="14_8i5lb"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyPursuit.cs" id="16_olasw"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyDeathState.cs" id="17_xem2y"]
-[ext_resource type="PackedScene" uid="uid://by3jtan5giqpe" path="res://Scripts/Components/HitBoxComponent.tscn" id="18_243vf"]
-[ext_resource type="PackedScene" uid="uid://7v2e40u7vp7j" path="res://Scripts/Components/PlayerDetectionComponent.tscn" id="19_vuurh"]
-[ext_resource type="PackedScene" uid="uid://cf4cnyjarrk2k" path="res://Scripts/Components/PlayerHurtComponent.tscn" id="20_pt4k3"]
+[ext_resource type="PackedScene" uid="uid://by3jtan5giqpe" path="res://Scripts/Components/EnemyComponents/HitBoxComponent.tscn" id="18_iuxud"]
+[ext_resource type="PackedScene" uid="uid://7v2e40u7vp7j" path="res://Scripts/Components/EnemyComponents/PlayerDetectionComponent.tscn" id="19_7xbq5"]
+[ext_resource type="PackedScene" uid="uid://cf4cnyjarrk2k" path="res://Scripts/Components/EnemyComponents/PlayerHurtComponent.tscn" id="20_8jski"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmwi"]
 size = Vector2(22, 6)
@@ -242,7 +242,7 @@ script = ExtResource("16_olasw")
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("17_xem2y")
 
-[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("18_243vf")]
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("18_iuxud")]
 stateMachine = NodePath("../StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
@@ -250,7 +250,7 @@ position = Vector2(-3, 2)
 shape = SubResource("RectangleShape2D_podqq")
 debug_color = Color(0.663927, 0.364656, 0.909418, 0.42)
 
-[node name="PlayerDetectionComponent" parent="." node_paths=PackedStringArray("toPlayerRaycast", "owner") instance=ExtResource("19_vuurh")]
+[node name="PlayerDetectionComponent" parent="." node_paths=PackedStringArray("toPlayerRaycast", "owner") instance=ExtResource("19_7xbq5")]
 toPlayerRaycast = NodePath("../ToPlayerRaycast")
 owner = NodePath("..")
 
@@ -258,7 +258,7 @@ owner = NodePath("..")
 position = Vector2(0, -17.5)
 shape = SubResource("RectangleShape2D_ak2we")
 
-[node name="PlayerHurtComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("20_pt4k3")]
+[node name="PlayerHurtComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("20_8jski")]
 stateMachine = NodePath("../StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtComponent"]
