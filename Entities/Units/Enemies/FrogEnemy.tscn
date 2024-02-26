@@ -1,0 +1,226 @@
+[gd_scene load_steps=31 format=3 uid="uid://b1tgsm6ljhgev"]
+
+[ext_resource type="Texture2D" uid="uid://ujfg0e7kamr1" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-1.png" id="1_06dl7"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/Enemy.cs" id="1_ew8da"]
+[ext_resource type="Texture2D" uid="uid://gbccxtrrep3i" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/frog/idle/frog-idle-1.png" id="1_u34wb"]
+[ext_resource type="Texture2D" uid="uid://btfxtsd52ov4d" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/frog/idle/frog-idle-2.png" id="2_h3tna"]
+[ext_resource type="Texture2D" uid="uid://bhl74xgtgpn7f" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-2.png" id="2_ysij0"]
+[ext_resource type="Texture2D" uid="uid://bxnjwvbbm5ue8" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-3.png" id="3_1a5r0"]
+[ext_resource type="Texture2D" uid="uid://kbhd7iu6dfxl" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/frog/idle/frog-idle-3.png" id="3_wx86a"]
+[ext_resource type="Texture2D" uid="uid://cmilv73evq44t" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/frog/idle/frog-idle-4.png" id="4_0qxkx"]
+[ext_resource type="Texture2D" uid="uid://bfee3lngnatlv" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-4.png" id="4_ntp7e"]
+[ext_resource type="Texture2D" uid="uid://cf3bv64e1wrbw" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-5.png" id="5_d3mtr"]
+[ext_resource type="Texture2D" uid="uid://brne7i8e4hmke" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/frog/jump/frog-jump-1.png" id="5_npicy"]
+[ext_resource type="Texture2D" uid="uid://m8ir1a2l15nl" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-6.png" id="6_2weco"]
+[ext_resource type="Texture2D" uid="uid://bccqkjij6kkw4" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/frog/jump/frog-jump-2.png" id="6_w18bn"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="14_78yfs"]
+[ext_resource type="PackedScene" uid="uid://by3jtan5giqpe" path="res://Scripts/Components/EnemyComponents/HitBoxComponent.tscn" id="15_flbf5"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemeyIdleState.cs" id="15_g3p5b"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyPursuit.cs" id="16_bl4pv"]
+[ext_resource type="PackedScene" uid="uid://7v2e40u7vp7j" path="res://Scripts/Components/EnemyComponents/PlayerDetectionComponent.tscn" id="16_u2pf2"]
+[ext_resource type="PackedScene" uid="uid://cf4cnyjarrk2k" path="res://Scripts/Components/EnemyComponents/PlayerHurtComponent.tscn" id="17_aat6j"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyDeathState.cs" id="17_tm666"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_df5ut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_06dl7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ysij0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1a5r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ntp7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d3mtr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2weco")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u34wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h3tna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wx86a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0qxkx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_npicy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w18bn")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_4ngnm"]
+resource_name = "Idle"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_0bymd"]
+resource_name = "Death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_2y6vj"]
+resource_name = "Pursuit"
+
+[sub_resource type="Animation" id="Animation_psoog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bcnc"]
+_data = {
+"Death": SubResource("Animation_0bymd"),
+"Idle": SubResource("Animation_4ngnm"),
+"Pursuit": SubResource("Animation_2y6vj"),
+"RESET": SubResource("Animation_psoog")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vblnb"]
+size = Vector2(24, 7.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mnrim"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7bysu"]
+radius = 195.01
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7720t"]
+radius = 6.08276
+
+[node name="FrogEnemy" type="CharacterBody2D"]
+script = ExtResource("1_ew8da")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_df5ut")
+animation = &"Death"
+autoplay = "Idle"
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5bcnc")
+}
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 7)
+shape = SubResource("RectangleShape2D_vblnb")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("14_78yfs")
+initialState = "Idle"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("15_g3p5b")
+
+[node name="Pursuit" type="Node" parent="StateMachine"]
+script = ExtResource("16_bl4pv")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("17_tm666")
+
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("15_flbf5")]
+stateMachine = NodePath("../StateMachine")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_mnrim")
+
+[node name="PlayerDetectionComponent" parent="." node_paths=PackedStringArray("toPlayerRaycast", "owner") instance=ExtResource("16_u2pf2")]
+toPlayerRaycast = NodePath("../ToPlayerRaycast")
+owner = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionComponent"]
+shape = SubResource("CircleShape2D_7bysu")
+
+[node name="PlayerHurtComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("17_aat6j")]
+stateMachine = NodePath("../StateMachine")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtComponent"]
+position = Vector2(-2, 7)
+shape = SubResource("CircleShape2D_7720t")
+
+[node name="ToPlayerRaycast" type="RayCast2D" parent="."]
