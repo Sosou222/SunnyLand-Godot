@@ -21,7 +21,7 @@ public partial class EnemeyIdleState : EnemyState
         owner.Velocity = vel;
         owner.MoveAndSlide();
 
-        if (owner.IsPlayerInSight())
+        if (owner.pdc.IsPlayerInSight())
         {
             stateMachine.ChangeState("Pursuit");
         }

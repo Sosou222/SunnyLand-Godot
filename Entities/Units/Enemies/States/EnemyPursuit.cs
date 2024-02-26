@@ -30,9 +30,9 @@ public partial class EnemyPursuit : EnemyState
         if (dirChangeCooldown <= 0)
         {
             dirChangeCooldown = dirChangeCooldownMax;
-            if (owner.IsPlayerInSight())
+            if (owner.pdc.IsPlayerInSight())
             {
-                Vector2 direction = owner.GetDirToPlayer();
+                Vector2 direction = owner.pdc.GetDirToPlayer();
 
                 if (direction.X < 0.0f)
                 {

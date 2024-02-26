@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf4cnyjarrk2k"]
+
+[ext_resource type="Script" path="res://Scripts/Components/PlayerHurtComponent.cs" id="1_3mxhj"]
+
+[node name="PlayerHurtComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_3mxhj")
+
+[connection signal="body_entered" from="." to="." method="OnHurtBoxEnter"]
+[connection signal="body_exited" from="." to="." method="OnHurtBoxExit"]

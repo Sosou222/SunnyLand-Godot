@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://7v2e40u7vp7j"]
+
+[ext_resource type="Script" path="res://Scripts/Components/PlayerDetectionComponent.cs" id="1_y35ad"]
+
+[node name="PlayerDetectionComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_y35ad")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExit"]

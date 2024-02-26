@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b26s6483hqcrb"]
+[gd_scene load_steps=31 format=3 uid="uid://b26s6483hqcrb"]
 
 [ext_resource type="Texture2D" uid="uid://blyjnkxqfyinm" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/opossum/opossum-2.png" id="1_0tt26"]
 [ext_resource type="Texture2D" uid="uid://ujfg0e7kamr1" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-1.png" id="1_3h5na"]
@@ -17,6 +17,9 @@
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemeyIdleState.cs" id="14_8i5lb"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyPursuit.cs" id="16_olasw"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyDeathState.cs" id="17_xem2y"]
+[ext_resource type="PackedScene" uid="uid://by3jtan5giqpe" path="res://Scripts/Components/HitBoxComponent.tscn" id="18_243vf"]
+[ext_resource type="PackedScene" uid="uid://7v2e40u7vp7j" path="res://Scripts/Components/PlayerDetectionComponent.tscn" id="19_vuurh"]
+[ext_resource type="PackedScene" uid="uid://cf4cnyjarrk2k" path="res://Scripts/Components/PlayerHurtComponent.tscn" id="20_pt4k3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmwi"]
 size = Vector2(22, 6)
@@ -190,21 +193,21 @@ _data = {
 "RESET": SubResource("Animation_116th")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2we"]
-size = Vector2(328, 107)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_podqq"]
 size = Vector2(20, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v5cu"]
-size = Vector2(18, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak2we"]
+size = Vector2(328, 107)
 
-[node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("toPlayerRaycast", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v5cu"]
+size = Vector2(16, 10)
+
+[node name="OpossumEnemy" type="CharacterBody2D" node_paths=PackedStringArray("pdc", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 collision_layer = 4
 floor_max_angle = 0.698132
 floor_snap_length = 4.0
 script = ExtResource("1_l0rxu")
-toPlayerRaycast = NodePath("ToPlayerRaycast")
+pdc = NodePath("PlayerDetectionComponent")
 stateMachine = NodePath("StateMachine")
 animationPlayer = NodePath("AnimationPlayer")
 AnimatedSprite2D = NodePath("AnimatedSprite2D")
@@ -239,36 +242,27 @@ script = ExtResource("16_olasw")
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("17_xem2y")
 
-[node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("18_243vf")]
+stateMachine = NodePath("../StateMachine")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(0, -17.5)
-shape = SubResource("RectangleShape2D_ak2we")
-
-[node name="HitBox" type="Area2D" parent="."]
-position = Vector2(0, -1)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-3, 3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(-3, 2)
 shape = SubResource("RectangleShape2D_podqq")
 debug_color = Color(0.663927, 0.364656, 0.909418, 0.42)
 
-[node name="PlayerHurt" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+[node name="PlayerDetectionComponent" parent="." node_paths=PackedStringArray("toPlayerRaycast", "owner") instance=ExtResource("19_vuurh")]
+toPlayerRaycast = NodePath("../ToPlayerRaycast")
+owner = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurt"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionComponent"]
+position = Vector2(0, -17.5)
+shape = SubResource("RectangleShape2D_ak2we")
+
+[node name="PlayerHurtComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("20_pt4k3")]
+stateMachine = NodePath("../StateMachine")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtComponent"]
 position = Vector2(-3, 9)
 shape = SubResource("RectangleShape2D_4v5cu")
 
 [node name="ToPlayerRaycast" type="RayCast2D" parent="."]
-
-[connection signal="body_entered" from="PlayerDetection" to="." method="OnBodyEntered"]
-[connection signal="body_exited" from="PlayerDetection" to="." method="OnBodyExit"]
-[connection signal="body_entered" from="HitBox" to="." method="OnHitboxEnter"]
-[connection signal="body_entered" from="PlayerHurt" to="." method="OnHurtBoxEnter"]
-[connection signal="body_exited" from="PlayerHurt" to="." method="OnHurtBoxExit"]
