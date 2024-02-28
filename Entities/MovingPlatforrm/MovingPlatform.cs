@@ -3,6 +3,14 @@ using System;
 
 public partial class MovingPlatform : Path2D
 {
+	private enum LoopSetting
+	{
+		None,
+		Loop,
+		BackToBack
+	}
+
+
 	[Export(PropertyHint.Range, "0,200,0.1")]
 	private double platformMoveTime = 2.0f;
 

@@ -48,7 +48,7 @@ public abstract partial class PlayerState : BaseState
     {
         if (Input.IsActionJustPressed("PlayerDown"))
         {
-            owner.GlobalPosition = owner.GlobalPosition + new Vector2(0, 1);
+            owner.GlobalPosition = owner.GlobalPosition + new Vector2(0, 4);
             owner.MoveAndSlide();
         }
     }

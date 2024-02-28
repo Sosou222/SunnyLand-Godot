@@ -24,6 +24,7 @@ public partial class PlayerIdleState : PlayerState
         Vector2 velocity = owner.Velocity;
         if (!owner.IsOnFloor())
             velocity.Y += gravity * (float)delta;
+        velocity.X = Mathf.MoveToward(owner.Velocity.X, 0, 180.0f);
         owner.Velocity = velocity;
         owner.MoveAndSlide();
 
