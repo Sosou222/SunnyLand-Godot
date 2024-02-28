@@ -195,13 +195,16 @@ position = Vector2(-2, -2)
 shape = SubResource("RectangleShape2D_ky1p6")
 debug_color = Color(0.663927, 0.364656, 0.909418, 0.42)
 
-[node name="PlayerDetectionComponent" parent="." instance=ExtResource("19_vu5vo")]
+[node name="PlayerDetectionComponent" parent="." node_paths=PackedStringArray("toPlayerRaycast", "owner") instance=ExtResource("19_vu5vo")]
+toPlayerRaycast = NodePath("../ToPlayerRaycast")
+owner = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionComponent"]
 position = Vector2(-4, 5)
 shape = SubResource("CircleShape2D_l0e4w")
 
-[node name="PlayerHurtComponent" parent="." instance=ExtResource("20_os26e")]
+[node name="PlayerHurtComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("20_os26e")]
+stateMachine = NodePath("../StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtComponent"]
 position = Vector2(-1.5, 9)
