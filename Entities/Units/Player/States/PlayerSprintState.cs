@@ -9,6 +9,8 @@ public partial class PlayerSprintState : PlayerMovementState
         GD.Print("Sprint Player Enter");
         owner.animationPlayer.Play("Run");
 
+        owner.animationPlayer.SpeedScale = 1.8f;
+
         Speed = SprintSpeed;
     }
 
@@ -45,5 +47,10 @@ public partial class PlayerSprintState : PlayerMovementState
             stateMachine.ChangeState(StateNames.Walk.ToString());
             return;
         }
+    }
+
+    public override void Exit()
+    {
+        owner.animationPlayer.SpeedScale = 1.0f;
     }
 }
