@@ -132,19 +132,32 @@ tracks/1/keys = {
 "values": [1, 2, 3, 0]
 }
 
-[sub_resource type="Animation" id="Animation_psoog"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ub70q"]
+resource_name = "JumpDown"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_2y6vj"]
@@ -175,32 +188,19 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_ub70q"]
-resource_name = "JumpDown"
-length = 0.2
+[sub_resource type="Animation" id="Animation_psoog"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Jump"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
+"values": [2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5bcnc"]
@@ -226,6 +226,7 @@ radius = 6.08276
 
 [node name="FrogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("pdc", "stateMachine", "animationPlayer", "AnimatedSprite2D")]
 collision_layer = 4
+collision_mask = 17
 script = ExtResource("1_ew8da")
 pdc = NodePath("PlayerDetectionComponent")
 stateMachine = NodePath("StateMachine")
