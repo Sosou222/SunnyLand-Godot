@@ -59,7 +59,7 @@ public partial class EnemyEagleAttackState : EnemyState
         owner.Velocity = vel;
 
         tween = owner.animationPlayer.CreateTween();
-        tween.TweenProperty(owner, "velocity", Vector2.Zero, 1.5f);
+        tween.TweenProperty(owner, "velocity", Vector2.Zero, 1.5f).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quad);
         tween.TweenCallback(Callable.From(() => stateMachine.ChangeState("Idle")));
     }
 }
