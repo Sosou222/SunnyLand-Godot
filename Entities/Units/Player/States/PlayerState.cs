@@ -17,6 +17,8 @@ public abstract partial class PlayerState : BaseState
         Hurt
     }
 
+    protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+
     public override bool Init<T>(T owner)
     {
         if (owner as Player == null)
@@ -25,6 +27,15 @@ public abstract partial class PlayerState : BaseState
         }
         this.owner = owner as Player;
         return true;
+    }
+
+    protected void TryFallFromPlatform()
+    {
+        if (Input.IsActionJustPressed("PlayerDown"))
+        {
+            owner.GlobalPosition = owner.GlobalPosition + new Vector2(0, 1);
+            owner.MoveAndSlide();
+        }
     }
 
     protected Vector2 GetInputVector()

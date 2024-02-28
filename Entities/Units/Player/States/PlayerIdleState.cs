@@ -4,6 +4,7 @@ using System;
 [GlobalClass]
 public partial class PlayerIdleState : PlayerState
 {
+
     public override void Enter()
     {
         GD.Print("Idle Unit Enter");
@@ -18,6 +19,14 @@ public partial class PlayerIdleState : PlayerState
 
     public override void PhysicsUpdate(double delta)
     {
+        Vector2 velocity = owner.Velocity;
+        if (!owner.IsOnFloor())
+            velocity.Y += gravity * (float)delta;
+        owner.Velocity = velocity;
+        owner.MoveAndSlide();
+
+        TryFallFromPlatform();
+
         if (GetInputVector().X != 0.0f)
         {
             stateMachine.ChangeState(StateNames.Walk.ToString());

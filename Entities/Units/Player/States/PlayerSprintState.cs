@@ -18,6 +18,8 @@ public partial class PlayerSprintState : PlayerMovementState
     {
         base.PhysicsUpdate(delta);
 
+        TryFallFromPlatform();
+
         if (WantsToJump() && owner.IsOnFloor())
         {
             stateMachine.ChangeState(StateNames.Jump.ToString());

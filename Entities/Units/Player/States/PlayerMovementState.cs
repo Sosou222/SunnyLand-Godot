@@ -8,8 +8,6 @@ public abstract partial class PlayerMovementState : PlayerState
     protected static float Speed = 180.0f;
     protected const float JumpVelocity = -320.0f;
 
-    protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
     protected Vector2 velocity;
 
     public override void PhysicsUpdate(double delta)
