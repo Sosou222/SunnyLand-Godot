@@ -6,6 +6,8 @@ public partial class EnemeyIdleState : EnemyState
 {
     [Export]
     private string idleAnimation = "Idle";
+    [Export]
+    private bool applyGravity = true;
     public override void Enter()
     {
         owner.animationPlayer.Play(idleAnimation);
@@ -16,10 +18,13 @@ public partial class EnemeyIdleState : EnemyState
 
     public override void PhysicsUpdate(double delta)
     {
-        Vector2 vel = CalculateGravity(owner.Velocity, delta);
+        if (applyGravity)
+        {
+            Vector2 vel = CalculateGravity(owner.Velocity, delta);
 
-        owner.Velocity = vel;
-        owner.MoveAndSlide();
+            owner.Velocity = vel;
+            owner.MoveAndSlide();
+        }
 
         if (owner.pdc.IsPlayerInSight())
         {

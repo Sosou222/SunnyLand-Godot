@@ -45,4 +45,11 @@ public partial class PlayerDetectionComponent : Area2D
 		return (player.GlobalPosition - owner.GlobalPosition).Normalized();
 	}
 
+	public float GetDistanceToPlayer()
+	{
+		if (player == null)
+			return -1.0f;
+		return (player.GlobalPosition - owner.GlobalPosition).Length();
+	}
+
 }

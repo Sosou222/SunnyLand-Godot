@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3bjhm07ospmb"]
+[gd_scene load_steps=29 format=3 uid="uid://b3bjhm07ospmb"]
 
 [ext_resource type="Script" path="res://Entities/Units/Enemies/Enemy.cs" id="1_xh4nc"]
 [ext_resource type="Texture2D" uid="uid://ujfg0e7kamr1" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-1.png" id="2_fjg4i"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://m8ir1a2l15nl" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-6.png" id="7_77end"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="14_vx46o"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemeyIdleState.cs" id="15_apbr8"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyEaglePursuitState.cs" id="15_rd1rx"]
+[ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyEagleAttackState.cs" id="16_lhbda"]
 [ext_resource type="Script" path="res://Entities/Units/Enemies/States/EnemyDeathState.cs" id="17_562ca"]
 [ext_resource type="PackedScene" uid="uid://by3jtan5giqpe" path="res://Scripts/Components/EnemyComponents/HitBoxComponent.tscn" id="18_f5uwo"]
 [ext_resource type="PackedScene" uid="uid://7v2e40u7vp7j" path="res://Scripts/Components/EnemyComponents/PlayerDetectionComponent.tscn" id="19_vu5vo"]
@@ -183,9 +185,16 @@ initialState = "Idle"
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("15_apbr8")
+applyGravity = false
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("17_562ca")
+
+[node name="Pursuit" type="Node" parent="StateMachine"]
+script = ExtResource("15_rd1rx")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("16_lhbda")
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("18_f5uwo")]
 stateMachine = NodePath("../StateMachine")
