@@ -12,6 +12,7 @@ public abstract partial class PlayerMovementState : PlayerState
 
     public override void PhysicsUpdate(double delta)
     {
+        base.PhysicsUpdate(delta);
         velocity = owner.Velocity;
         if (!owner.IsOnFloor())
             velocity.Y += gravity * (float)delta;

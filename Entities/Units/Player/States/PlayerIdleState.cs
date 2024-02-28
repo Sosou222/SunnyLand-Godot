@@ -19,6 +19,8 @@ public partial class PlayerIdleState : PlayerState
 
     public override void PhysicsUpdate(double delta)
     {
+        base.PhysicsUpdate(delta);
+
         Vector2 velocity = owner.Velocity;
         if (!owner.IsOnFloor())
             velocity.Y += gravity * (float)delta;

@@ -19,6 +19,9 @@ public abstract partial class PlayerState : BaseState
 
     protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
+    private double rememberJumpTimer = 0.0f;
+    private double rememberJumpTimerMax = 0.1f;
+
     public override bool Init<T>(T owner)
     {
         if (owner as Player == null)
@@ -27,6 +30,18 @@ public abstract partial class PlayerState : BaseState
         }
         this.owner = owner as Player;
         return true;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (rememberJumpTimer >= 0)
+        {
+            rememberJumpTimer -= delta;
+        }
+        if (Input.IsActionJustPressed("PlayerJump"))
+        {
+            rememberJumpTimer = rememberJumpTimerMax;
+        }
     }
 
     protected void TryFallFromPlatform()
@@ -45,7 +60,7 @@ public abstract partial class PlayerState : BaseState
 
     protected bool WantsToJump()
     {
-        return Input.IsActionJustPressed("PlayerJump");
+        return rememberJumpTimer > 0.0f ? true : false;
     }
 
     protected bool WantToCrouch()
