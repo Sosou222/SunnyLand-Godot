@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://68aqmpcfxbai"]
+[gd_scene load_steps=16 format=3 uid="uid://68aqmpcfxbai"]
 
 [ext_resource type="Texture2D" uid="uid://cmpp5mjwb2gs1" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/tileset.png" id="1_24ka2"]
 [ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="2_62jxs"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b2qpcwh3pm1kg" path="res://UI/HealthBarUI.tscn" id="8_phwuf"]
 [ext_resource type="PackedScene" uid="uid://b1tgsm6ljhgev" path="res://Entities/Units/Enemies/FrogEnemy.tscn" id="9_r4c0k"]
 [ext_resource type="PackedScene" uid="uid://b3bjhm07ospmb" path="res://Entities/Units/Enemies/EagleEnemy.tscn" id="10_whlbx"]
+[ext_resource type="PackedScene" uid="uid://c1m4lx00l45yd" path="res://Entities/MovingPlatforrm/MovingPlatformOneWaySquare.tscn" id="12_tfeqr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmjw7"]
 texture = ExtResource("1_24ka2")
@@ -926,6 +927,9 @@ offset_bottom = 64.0
 
 [node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("8_phwuf")]
 player = NodePath("../../Player")
+
+[node name="MovingPlatformOneWay" parent="." instance=ExtResource("12_tfeqr")]
+position = Vector2(-161, 87)
 
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]
 [connection signal="GemCountChange" from="Player" to="CanvasLayer/GemUI" method="UpdateValue"]
