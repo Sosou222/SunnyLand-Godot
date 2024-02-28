@@ -261,7 +261,7 @@ script = ExtResource("17_tm666")
 script = ExtResource("17_b7gfl")
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("stateMachine") instance=ExtResource("15_flbf5")]
-stompThreshhold = 0.65
+stompThreshhold = 0.8
 stateMachine = NodePath("../StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
