@@ -40,10 +40,10 @@ texture = ExtResource("1_24ka2")
 10:1/0 = 0
 10:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:1/0/physics_layer_0/angular_velocity = 0.0
-10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
-10:1/0/physics_layer_0/polygon_0/one_way = true
 10:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 10:1/0/physics_layer_1/angular_velocity = 0.0
+10:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 8, 0, -8, 0)
+10:1/0/physics_layer_1/polygon_0/one_way = true
 11:1/0 = 0
 11:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:1/0/physics_layer_0/angular_velocity = 0.0
@@ -166,17 +166,17 @@ texture = ExtResource("1_24ka2")
 8:3/0 = 0
 8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:3/0/physics_layer_0/angular_velocity = 0.0
-8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
-8:3/0/physics_layer_0/polygon_0/one_way = true
 8:3/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 8:3/0/physics_layer_1/angular_velocity = 0.0
+8:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 8, 0, -8, 0)
+8:3/0/physics_layer_1/polygon_0/one_way = true
 10:3/0 = 0
 10:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:3/0/physics_layer_0/angular_velocity = 0.0
-10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
-10:3/0/physics_layer_0/polygon_0/one_way = true
 10:3/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 10:3/0/physics_layer_1/angular_velocity = 0.0
+10:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 8, 0, -8, 0)
+10:3/0/physics_layer_1/polygon_0/one_way = true
 11:3/0 = 0
 11:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:3/0/physics_layer_0/angular_velocity = 0.0
@@ -234,17 +234,17 @@ texture = ExtResource("1_24ka2")
 8:5/0 = 0
 8:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:5/0/physics_layer_0/angular_velocity = 0.0
-8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
-8:5/0/physics_layer_0/polygon_0/one_way = true
 8:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 8:5/0/physics_layer_1/angular_velocity = 0.0
+8:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 8, 0, -8, 0)
+8:5/0/physics_layer_1/polygon_0/one_way = true
 9:5/0 = 0
 9:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:5/0/physics_layer_0/angular_velocity = 0.0
-9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
-9:5/0/physics_layer_0/polygon_0/one_way = true
 9:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 9:5/0/physics_layer_1/angular_velocity = 0.0
+9:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 8, 0, -8, 0)
+9:5/0/physics_layer_1/polygon_0/one_way = true
 14:5/0 = 0
 14:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:5/0/physics_layer_0/angular_velocity = 0.0
@@ -714,10 +714,10 @@ texture = ExtResource("1_24ka2")
 9:1/0 = 0
 9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:1/0/physics_layer_0/angular_velocity = 0.0
-9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
-9:1/0/physics_layer_0/polygon_0/one_way = true
 9:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 9:1/0/physics_layer_1/angular_velocity = 0.0
+9:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 8, 0, -8, 0)
+9:1/0/physics_layer_1/polygon_0/one_way = true
 
 [sub_resource type="TileSet" id="TileSet_rnbd5"]
 physics_layer_0/collision_layer = 1
@@ -751,6 +751,15 @@ position = Vector2(222, 57)
 
 [node name="OpossumEnemy2" parent="Enemies" instance=ExtResource("7_sr20f")]
 position = Vector2(681, 61)
+
+[node name="FrogEnemy" parent="Enemies" instance=ExtResource("9_r4c0k")]
+position = Vector2(362, 43)
+
+[node name="EagleEnemy" parent="Enemies" instance=ExtResource("10_whlbx")]
+position = Vector2(793, 0)
+
+[node name="EagleEnemy2" parent="Enemies" instance=ExtResource("10_whlbx")]
+position = Vector2(1081, -21)
 
 [node name="Collectibles" type="Node" parent="."]
 
@@ -798,15 +807,6 @@ offset_bottom = 64.0
 
 [node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("8_phwuf")]
 player = NodePath("../../Player")
-
-[node name="FrogEnemy" parent="." instance=ExtResource("9_r4c0k")]
-position = Vector2(362, 43)
-
-[node name="EagleEnemy" parent="." instance=ExtResource("10_whlbx")]
-position = Vector2(793, 0)
-
-[node name="EagleEnemy2" parent="." instance=ExtResource("10_whlbx")]
-position = Vector2(1081, -21)
 
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]
 [connection signal="GemCountChange" from="Player" to="CanvasLayer/GemUI" method="UpdateValue"]
