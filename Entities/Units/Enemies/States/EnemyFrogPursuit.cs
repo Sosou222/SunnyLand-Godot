@@ -11,7 +11,7 @@ public partial class EnemyFrogPursuit : EnemyState
 
 
     protected static float Speed = 100.0f;
-    private float jumpForce = -300.0f;
+    private float jumpForce = -250.0f;
 
     private float dirX = 0.0f;
 

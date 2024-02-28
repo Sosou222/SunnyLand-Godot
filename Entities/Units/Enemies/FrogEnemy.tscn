@@ -235,7 +235,6 @@ AnimatedSprite2D = NodePath("AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_df5ut")
 animation = &"Idle"
-autoplay = "Idle"
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
