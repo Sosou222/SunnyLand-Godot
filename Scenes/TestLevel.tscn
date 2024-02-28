@@ -930,6 +930,8 @@ player = NodePath("../../Player")
 
 [node name="MovingPlatformOneWay" parent="." instance=ExtResource("12_tfeqr")]
 position = Vector2(-161, 87)
+easeType = 2
+transitionType = 9
 
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]
 [connection signal="GemCountChange" from="Player" to="CanvasLayer/GemUI" method="UpdateValue"]

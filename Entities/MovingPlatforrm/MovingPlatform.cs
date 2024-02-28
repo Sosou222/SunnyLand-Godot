@@ -15,6 +15,10 @@ public partial class MovingPlatform : Path2D
 	private double platformMoveTime = 2.0f;
 	[Export]
 	private LoopSetting loppSet = LoopSetting.Loop;
+	[Export]
+	private Tween.EaseType easeType = Tween.EaseType.In;
+	[Export]
+	private Tween.TransitionType transitionType = Tween.TransitionType.Linear;
 
 	private PathFollow2D pathFollow2D;
 
@@ -35,7 +39,7 @@ public partial class MovingPlatform : Path2D
 	private void BeginMovement()
 	{
 		tween = GetTree().CreateTween();
-		tween.TweenProperty(pathFollow2D, "progress_ratio", 1.0f, platformMoveTime).From(0.0f);
+		tween.TweenProperty(pathFollow2D, "progress_ratio", 1.0f, platformMoveTime).From(0.0f).SetEase(easeType).SetTrans(transitionType);
 		if (loppSet == LoopSetting.Loop)
 			tween.TweenCallback(Callable.From(() => BeginMovement()));
 		if (loppSet == LoopSetting.BackToBack)
@@ -45,7 +49,7 @@ public partial class MovingPlatform : Path2D
 	private void MoveBackwards()
 	{
 		tween = GetTree().CreateTween();
-		tween.TweenProperty(pathFollow2D, "progress_ratio", 0.0f, platformMoveTime).From(1.0f);
+		tween.TweenProperty(pathFollow2D, "progress_ratio", 0.0f, platformMoveTime).From(1.0f).SetEase(easeType).SetTrans(transitionType);
 		tween.TweenCallback(Callable.From(() => BeginMovement()));
 	}
 
