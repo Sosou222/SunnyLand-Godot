@@ -40,6 +40,7 @@ project/assembly_name="SunnyLand-Godot"
 folder_colors={
 "res://Entities/": "red",
 "res://Entities/Collectibles/": "purple",
+"res://Fonts/": "green",
 "res://Scenes/": "orange",
 "res://Scripts/": "blue",
 "res://Sprites/": "yellow",
