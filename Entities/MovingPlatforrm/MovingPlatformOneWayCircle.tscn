@@ -1,20 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw3uyqikebk48"]
+[gd_scene load_steps=5 format=3 uid="uid://b0jb8abfa0s2b"]
 
-[ext_resource type="Script" path="res://Entities/MovingPlatforrm/MovingPlatform.cs" id="1_j3dsm"]
-[ext_resource type="Texture2D" uid="uid://pf0w63y7e8a4" path="res://Sprites/Sunny-land-files/Graphical Assets/Platform.png" id="2_p6eg0"]
+[ext_resource type="Script" path="res://Entities/MovingPlatforrm/MovingPlatform.cs" id="1_rqjf2"]
+[ext_resource type="Texture2D" uid="uid://pf0w63y7e8a4" path="res://Sprites/Sunny-land-files/Graphical Assets/Platform.png" id="2_isu3q"]
+
+[sub_resource type="Curve2D" id="Curve2D_sl8e8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 30, 0, -30, -45, -45, -30, 0, 30, 0, 0, -90, 0, -30, 0, 30, 45, -45, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ar1j"]
 size = Vector2(48, 7)
 
 [node name="MovingPlatformOneWay" type="Path2D"]
-script = ExtResource("1_j3dsm")
+curve = SubResource("Curve2D_sl8e8")
+script = ExtResource("1_rqjf2")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
-texture = ExtResource("2_p6eg0")
+texture = ExtResource("2_isu3q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 position = Vector2(0, -0.5)
