@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://botlcavej1u7d"]
+[gd_scene load_steps=4 format=3 uid="uid://botlcavej1u7d"]
 
 [ext_resource type="Texture2D" uid="uid://dboqeer8m0bb3" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-1.png" id="1_dgudo"]
 [ext_resource type="Script" path="res://UI/CollectibleUI.cs" id="2_wcxrm"]
+[ext_resource type="FontFile" uid="uid://njgx4srbq8as" path="res://Fonts/m5x7.ttf" id="3_g634g"]
 
 [node name="GemUI" type="TextureRect"]
 offset_right = 32.0
@@ -15,4 +16,6 @@ offset_left = 33.0
 offset_top = 4.0
 offset_right = 71.0
 offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("3_g634g")
+theme_override_font_sizes/font_size = 32
 text = "x 0"

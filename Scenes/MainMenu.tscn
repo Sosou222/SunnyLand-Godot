@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cef0tfnw0suqw"]
+[gd_scene load_steps=3 format=3 uid="uid://cef0tfnw0suqw"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.cs" id="1_0r6m8"]
+[ext_resource type="FontFile" uid="uid://njgx4srbq8as" path="res://Fonts/m5x7.ttf" id="2_x4u4n"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,6 +18,8 @@ offset_left = 168.0
 offset_top = 32.0
 offset_right = 328.0
 offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("2_x4u4n")
+theme_override_font_sizes/font_size = 32
 text = "Start
 "
 
@@ -26,6 +29,8 @@ offset_left = 168.0
 offset_top = 173.0
 offset_right = 328.0
 offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("2_x4u4n")
+theme_override_font_sizes/font_size = 32
 text = "Quit"
 
 [connection signal="pressed" from="StartButton" to="." method="OnStartButtonPressed"]
