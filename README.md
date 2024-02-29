@@ -7,5 +7,8 @@ https://ansimuz.itch.io/sunny-land-pixel-game-art
 Pixel Heart made by Nicole Marie link:
 https://nicolemariet.itch.io/pixel-heart-animation-32x32-16x16-freebie
 
+Borders and Panels by BDragon1727 link:
+https://bdragon1727.itch.io/border-and-panels-menu-part-1
+
 Font by Daniel Linssen link:
 https://managore.itch.io/m5x7

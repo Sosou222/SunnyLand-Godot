@@ -926,21 +926,6 @@ position = Vector2(968, 2)
 [node name="Gem5" parent="Collectibles" instance=ExtResource("4_wfrrb")]
 position = Vector2(1097, 41)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CherryUI" parent="CanvasLayer" instance=ExtResource("5_edseh")]
-offset_left = 392.0
-offset_right = 424.0
-
-[node name="GemUI" parent="CanvasLayer" instance=ExtResource("6_v6g0t")]
-offset_left = 392.0
-offset_top = 32.0
-offset_right = 424.0
-offset_bottom = 64.0
-
-[node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("8_phwuf")]
-player = NodePath("../../Player")
-
 [node name="MovingPlatf" type="Node" parent="."]
 
 [node name="MovingPlatformOneWay" parent="MovingPlatf" instance=ExtResource("12_tfeqr")]
@@ -968,6 +953,21 @@ position = Vector2(-93, 58)
 curve = SubResource("Curve2D_ry5h2")
 platformMoveTime = 7.0
 loppSet = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CherryUI" parent="CanvasLayer" instance=ExtResource("5_edseh")]
+offset_left = 392.0
+offset_right = 424.0
+
+[node name="GemUI" parent="CanvasLayer" instance=ExtResource("6_v6g0t")]
+offset_left = 392.0
+offset_top = 32.0
+offset_right = 424.0
+offset_bottom = 64.0
+
+[node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("8_phwuf")]
+player = NodePath("../../Player")
 
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]
 [connection signal="GemCountChange" from="Player" to="CanvasLayer/GemUI" method="UpdateValue"]
