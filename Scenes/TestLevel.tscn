@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://68aqmpcfxbai"]
+[gd_scene load_steps=23 format=3 uid="uid://68aqmpcfxbai"]
 
 [ext_resource type="Texture2D" uid="uid://cmpp5mjwb2gs1" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/tileset.png" id="1_24ka2"]
 [ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="2_62jxs"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c1xlcbwkvekij" path="res://Entities/MovingPlatforrm/MovingPlatformCircle.tscn" id="15_f0oaf"]
 [ext_resource type="PackedScene" uid="uid://cbv6fjebo6jl" path="res://Entities/MovingPlatforrm/MovingPlatformLine.tscn" id="16_a4uro"]
 [ext_resource type="PackedScene" uid="uid://btg6c5mxeie22" path="res://Entities/MovingPlatforrm/MovingPlatformSquare.tscn" id="17_74tjk"]
+[ext_resource type="PackedScene" uid="uid://dqon86e7r8fj3" path="res://Entities/MovingPlatforrm/MovingPlatform.tscn" id="18_17556"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmjw7"]
 texture = ExtResource("1_24ka2")
@@ -851,6 +852,12 @@ physics_layer_1/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_jmjw7")
 sources/1 = SubResource("TileSetAtlasSource_ughb8")
 
+[sub_resource type="Curve2D" id="Curve2D_ry5h2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 0, -26.9391, 0.748308, 26.9391, -0.748308, 27, -31, -28.4357, -5.98646, 28.4357, 5.98646, 57, -12, 0, 0, 0, 0, 81, -49, -25.0683, 29.5582, 25.0683, -29.5582, 76, -86, -8.23139, -12.3471, 8.23139, 12.3471, 125, -91, 0, 0, 0, 0, 171, -106)
+}
+point_count = 7
+
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -952,6 +959,12 @@ position = Vector2(159, 220)
 
 [node name="MovingPlatform3" parent="." instance=ExtResource("17_74tjk")]
 position = Vector2(209, 217)
+
+[node name="MovingPlatform4" parent="." instance=ExtResource("18_17556")]
+position = Vector2(-93, 58)
+curve = SubResource("Curve2D_ry5h2")
+platformMoveTime = 7.0
+loppSet = 2
 
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]
 [connection signal="GemCountChange" from="Player" to="CanvasLayer/GemUI" method="UpdateValue"]
