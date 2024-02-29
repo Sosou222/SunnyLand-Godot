@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqon86e7r8fj3"]
+
+[ext_resource type="Script" path="res://Entities/MovingPlatforrm/MovingPlatform.cs" id="1_flm1t"]
+[ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="2_86pk1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcc0t"]
+atlas = ExtResource("2_86pk1")
+region = Rect2(256, 192, 32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21nfb"]
+size = Vector2(32, 15)
+
+[node name="MovingPlatformOneWay" type="Path2D"]
+script = ExtResource("1_flm1t")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = SubResource("AtlasTexture_jcc0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_21nfb")
+one_way_collision = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
