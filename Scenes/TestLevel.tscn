@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://68aqmpcfxbai"]
+[gd_scene load_steps=21 format=3 uid="uid://68aqmpcfxbai"]
 
 [ext_resource type="Texture2D" uid="uid://cmpp5mjwb2gs1" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/tileset.png" id="1_24ka2"]
 [ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="2_62jxs"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://c1m4lx00l45yd" path="res://Entities/MovingPlatforrm/MovingPlatformOneWaySquare.tscn" id="12_tfeqr"]
 [ext_resource type="PackedScene" uid="uid://b0jb8abfa0s2b" path="res://Entities/MovingPlatforrm/MovingPlatformOneWayCircle.tscn" id="13_svrtt"]
 [ext_resource type="PackedScene" uid="uid://daqwgp3yqa6k5" path="res://Entities/MovingPlatforrm/MovingPlatformOneWayLine.tscn" id="14_rhmuk"]
+[ext_resource type="PackedScene" uid="uid://c1xlcbwkvekij" path="res://Entities/MovingPlatforrm/MovingPlatformCircle.tscn" id="15_f0oaf"]
+[ext_resource type="PackedScene" uid="uid://cbv6fjebo6jl" path="res://Entities/MovingPlatforrm/MovingPlatformLine.tscn" id="16_a4uro"]
+[ext_resource type="PackedScene" uid="uid://btg6c5mxeie22" path="res://Entities/MovingPlatforrm/MovingPlatformSquare.tscn" id="17_74tjk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmjw7"]
 texture = ExtResource("1_24ka2")
@@ -940,6 +943,15 @@ position = Vector2(-223, 87)
 
 [node name="MovingPlatformOneWay3" parent="." instance=ExtResource("14_rhmuk")]
 position = Vector2(-299, 93)
+
+[node name="MovingPlatform" parent="." instance=ExtResource("15_f0oaf")]
+position = Vector2(79, 221)
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("16_a4uro")]
+position = Vector2(159, 220)
+
+[node name="MovingPlatform3" parent="." instance=ExtResource("17_74tjk")]
+position = Vector2(209, 217)
 
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]
 [connection signal="GemCountChange" from="Player" to="CanvasLayer/GemUI" method="UpdateValue"]

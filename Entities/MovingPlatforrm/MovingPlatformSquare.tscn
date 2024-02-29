@@ -1,17 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqon86e7r8fj3"]
+[gd_scene load_steps=6 format=3 uid="uid://btg6c5mxeie22"]
 
-[ext_resource type="Script" path="res://Entities/MovingPlatforrm/MovingPlatform.cs" id="1_flm1t"]
-[ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="2_86pk1"]
+[ext_resource type="Script" path="res://Entities/MovingPlatforrm/MovingPlatform.cs" id="1_trlxs"]
+[ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="2_5ng2y"]
+
+[sub_resource type="Curve2D" id="Curve2D_54wrr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 60, -60, 0, 0, 0, 0, 0, -60, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcc0t"]
-atlas = ExtResource("2_86pk1")
+atlas = ExtResource("2_5ng2y")
 region = Rect2(256, 192, 32, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21nfb"]
 size = Vector2(32, 15)
 
 [node name="MovingPlatform" type="Path2D"]
-script = ExtResource("1_flm1t")
+curve = SubResource("Curve2D_54wrr")
+script = ExtResource("1_trlxs")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 collision_mask = 0
