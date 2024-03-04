@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2i0uw7bjvb44"]
+
+[ext_resource type="Script" path="res://Entities/Shop.cs" id="1_qbfs8"]
+[ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="2_2r7sl"]
+[ext_resource type="PackedScene" uid="uid://bgfucjd6swnsk" path="res://UI/TextBoxDetector.tscn" id="3_61kfo"]
+[ext_resource type="Texture2D" uid="uid://dboqeer8m0bb3" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/gem/gem-1.png" id="4_wyidm"]
+[ext_resource type="Texture2D" uid="uid://d1uxptk8p2pm2" path="res://Sprites/PixelHeart/Pixel Heart Sprite Sheet 32x32.png" id="5_cpwld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh3w0"]
+atlas = ExtResource("2_2r7sl")
+region = Rect2(312, 16, 96, 112)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xegtn"]
+radius = 42.19
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3awg"]
+atlas = ExtResource("5_cpwld")
+region = Rect2(0, 0, 32, 32)
+
+[node name="Shop" type="Area2D" node_paths=PackedStringArray("toDisable", "labelText")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qbfs8")
+toDisable = [NodePath("TextBoxDetector")]
+labelText = NodePath("TextBoxDetector/TextBox/MarginContainer/Label")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(0, -57)
+texture = SubResource("AtlasTexture_oh3w0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26)
+shape = SubResource("CircleShape2D_xegtn")
+
+[node name="TextBoxDetector" parent="." instance=ExtResource("3_61kfo")]
+position = Vector2(0, -44)
+minumumLenght = 40
+
+[node name="Label" parent="TextBoxDetector/TextBox/MarginContainer" index="0"]
+text = "      x 3
+    =
+
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="TextBoxDetector/TextBox/MarginContainer" index="1"]
+position = Vector2(27, 16)
+texture = ExtResource("4_wyidm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TextBoxDetector/TextBox/MarginContainer" index="2"]
+position = Vector2(46, 33)
+scale = Vector2(0.611428, 0.639111)
+texture = SubResource("AtlasTexture_y3awg")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEnter"]
+[connection signal="body_exited" from="." to="." method="OnBodyExit"]
+
+[editable path="TextBoxDetector"]
+[editable path="TextBoxDetector/TextBox"]

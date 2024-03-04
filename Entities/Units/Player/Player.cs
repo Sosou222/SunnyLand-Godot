@@ -3,8 +3,8 @@ using System;
 
 public partial class Player : Unit
 {
-    private int cherryCount = 0;
-    private int gemCount = 0;
+    public int cherryCount { get; private set; } = 0;
+    public int gemCount { get; private set; } = 0;
 
     private double invisiblityFrames = 0.0f;
     private const double invisiblityFramesMax = 2.0f;
