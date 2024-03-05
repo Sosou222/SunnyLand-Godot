@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct1k72pq4fppb"]
+
+[ext_resource type="Texture2D" uid="uid://cwkc428mv4y66" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/back.png" id="1_en3iy"]
+[ext_resource type="Texture2D" uid="uid://guk75kh1s1r3" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/middle.png" id="2_ritxj"]
+
+[node name="Background" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+scale = Vector2(1.25, 1.125)
+texture = ExtResource("1_en3iy")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(492, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(1.13687e-13, 140.273)
+scale = Vector2(0.352273, 0.352273)
+texture = ExtResource("2_ritxj")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(61, 140.273)
+scale = Vector2(0.352273, 0.352273)
+texture = ExtResource("2_ritxj")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(123, 140)
+scale = Vector2(0.352273, 0.352273)
+texture = ExtResource("2_ritxj")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(184, 140)
+scale = Vector2(0.352273, 0.352273)
+texture = ExtResource("2_ritxj")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(246, 140.273)
+scale = Vector2(0.352273, 0.352273)
+texture = ExtResource("2_ritxj")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(307, 140.273)
+scale = Vector2(0.352273, 0.352273)
+texture = ExtResource("2_ritxj")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(369, 140)
+scale = Vector2(0.352273, 0.352273)
+texture = ExtResource("2_ritxj")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(430, 140)
+scale = Vector2(0.352273, 0.352273)
+texture = ExtResource("2_ritxj")
+centered = false
