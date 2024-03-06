@@ -57,6 +57,12 @@ public partial class Player : Unit
         if (invisiblityFrames <= 0.0f)
         {
             healthComponent.TakeDamage(damage);
+            if (healthComponent.Health == 0)
+            {
+                stateMachine.ChangeState(PlayerState.StateNames.Death.ToString());
+
+                return;
+            }
             invisiblityFrames = invisiblityFramesMax;
 
             Vector2 vel = Velocity;

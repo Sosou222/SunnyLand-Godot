@@ -44,8 +44,14 @@ public partial class SceneManager : Node
         ResourceLoader.LoadThreadedRequest(sceneToLoad);
     }
 
+    public void ReloadScene()
+    {
+        GetTree().ReloadCurrentScene();
+    }
+
     public void QuitGame()
     {
         GetTree().Quit();
     }
+
 }

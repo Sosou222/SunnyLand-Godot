@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://blf8ofe3m4xsa"]
+[gd_scene load_steps=42 format=3 uid="uid://blf8ofe3m4xsa"]
 
 [ext_resource type="Texture2D" uid="uid://cg1aekn3qe8ku" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/player/climb/player-climb-1.png" id="1_7r47v"]
 [ext_resource type="Script" path="res://Entities/Units/Player/Player.cs" id="1_3040n"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerFallState.cs" id="29_1slbt"]
 [ext_resource type="Script" path="res://Scripts/Components/HealthComponent.cs" id="29_cut6w"]
 [ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerHurtState.cs" id="30_bywtj"]
+[ext_resource type="Script" path="res://Entities/Units/Player/States/PlayerDeathState.cs" id="31_kcbdv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fysra"]
 animations = [{
@@ -378,6 +379,9 @@ script = ExtResource("29_1slbt")
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("30_bywtj")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("31_kcbdv")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-7, 16)

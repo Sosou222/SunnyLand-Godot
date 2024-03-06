@@ -14,7 +14,8 @@ public abstract partial class PlayerState : BaseState
         Crouch,
         Sprint,
         Fall,
-        Hurt
+        Hurt,
+        Death
     }
 
     protected float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
