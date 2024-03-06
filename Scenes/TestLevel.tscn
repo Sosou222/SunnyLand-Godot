@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://68aqmpcfxbai"]
+[gd_scene load_steps=27 format=3 uid="uid://68aqmpcfxbai"]
 
 [ext_resource type="Texture2D" uid="uid://cmpp5mjwb2gs1" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/tileset.png" id="1_24ka2"]
 [ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="2_62jxs"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ct1k72pq4fppb" path="res://UI/Background.tscn" id="19_onlpn"]
 [ext_resource type="PackedScene" uid="uid://bgfucjd6swnsk" path="res://UI/TextBoxDetector.tscn" id="19_sb10t"]
 [ext_resource type="PackedScene" uid="uid://b2i0uw7bjvb44" path="res://Entities/Shop.tscn" id="20_3mlfu"]
+[ext_resource type="PackedScene" uid="uid://ch2i165tcaw5y" path="res://Entities/Door.tscn" id="22_xay6c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmjw7"]
 texture = ExtResource("1_24ka2")
@@ -986,6 +987,9 @@ text = "Use AWSD or arrow keys to Move."
 [node name="Shop" parent="." instance=ExtResource("20_3mlfu")]
 position = Vector2(72, 97)
 purcvhasePrice = 4
+
+[node name="Door" parent="." instance=ExtResource("22_xay6c")]
+position = Vector2(-16, 143)
 
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]
 [connection signal="GemCountChange" from="Player" to="CanvasLayer/GemUI" method="UpdateValue"]

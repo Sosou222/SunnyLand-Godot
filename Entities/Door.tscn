@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch2i165tcaw5y"]
+
+[ext_resource type="Script" path="res://Entities/Door.cs" id="1_ejua4"]
+[ext_resource type="Texture2D" uid="uid://cyr3a6k6boic8" path="res://Sprites/Sunny-land-files/Graphical Assets/environment/Background/props.png" id="1_wio3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8e68"]
+size = Vector2(26, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8m72"]
+atlas = ExtResource("1_wio3w")
+region = Rect2(8, 64, 32, 32)
+
+[node name="Door" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ejua4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_g8e68")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+texture = SubResource("AtlasTexture_u8m72")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEnter"]
+[connection signal="body_exited" from="." to="." method="OnBodyExit"]
