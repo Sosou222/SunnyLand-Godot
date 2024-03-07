@@ -15,3 +15,6 @@ https://managore.itch.io/m5x7
 
 Music by ansimuz:
 https://soundcloud.com/ansimuz
+
+SFX made in chiptone:
+https://sfbgames.itch.io/chiptone
