@@ -1,7 +1,7 @@
 # SunnyLand-Godot
 A 2D platformer created with Godot 4 C# and SunnyLand asset pack.
 
-SunnyLand asset pack link:
+SunnyLand asset pack by ansimuz link:
 https://ansimuz.itch.io/sunny-land-pixel-game-art
 
 Pixel Heart made by Nicole Marie link:
@@ -12,3 +12,6 @@ https://bdragon1727.itch.io/border-and-panels-menu-part-1
 
 Font by Daniel Linssen link:
 https://managore.itch.io/m5x7
+
+Music by ansimuz:
+https://soundcloud.com/ansimuz
