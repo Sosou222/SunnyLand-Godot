@@ -10,7 +10,7 @@ public partial class MainMenu : Control
 
     private void OnStartButtonPressed()
     {
-        SceneManager.instance.LoadScene("TestLevel");
+        SceneManager.instance.LoadScene("Level1");
         AudioManager.PlayMusic("Level");
     }
 

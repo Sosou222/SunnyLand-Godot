@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnq1awoyghpjs"]
+[gd_scene load_steps=7 format=3 uid="uid://dnq1awoyghpjs"]
 
 [ext_resource type="TileSet" uid="uid://cmvltb2jr6p2m" path="res://Scenes/TileSet.tres" id="1_xgxwy"]
 [ext_resource type="PackedScene" uid="uid://blf8ofe3m4xsa" path="res://Entities/Units/Player/Player.tscn" id="2_pms8j"]
+[ext_resource type="PackedScene" uid="uid://ct1k72pq4fppb" path="res://UI/Background.tscn" id="3_g704j"]
 [ext_resource type="PackedScene" uid="uid://cn57l5u1a0byo" path="res://UI/CherryUI.tscn" id="3_w0wd4"]
 [ext_resource type="PackedScene" uid="uid://botlcavej1u7d" path="res://UI/GemUI.tscn" id="4_87pxh"]
 [ext_resource type="PackedScene" uid="uid://b2qpcwh3pm1kg" path="res://UI/HealthBarUI.tscn" id="5_6lry1"]
@@ -18,6 +19,10 @@ layer_2/name = "Foreground"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("2_pms8j")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Background" parent="Player/Camera2D" instance=ExtResource("3_g704j")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
