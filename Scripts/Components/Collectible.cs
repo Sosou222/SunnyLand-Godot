@@ -25,6 +25,7 @@ public partial class Collectible : Area2D
 			SetDeferred("monitoring", false); // Can't use 'Monitoring = false;' beacuse it is 'monitoring' currently. Probably would work outside this signal function...mabye
 
 			PickupTween();
+			AudioManager.PlayeSound("PickUp");
 		}
 	}
 

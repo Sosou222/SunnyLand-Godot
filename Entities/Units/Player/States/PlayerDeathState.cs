@@ -19,6 +19,8 @@ public partial class PlayerDeathState : PlayerState
         tween.TweenProperty(owner.GetNode<AnimatedSprite2D>("AnimatedSprite2D"), "position", new Vector2(0, 200), 1.0f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
 
         tween.TweenCallback(Callable.From(() => SceneManager.instance.ReloadScene()));
+
+        AudioManager.PlayeSound("PlayerDeath");
     }
 
     public override void Update(double delta)

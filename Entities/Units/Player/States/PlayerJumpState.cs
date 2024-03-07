@@ -12,6 +12,7 @@ public partial class PlayerJumpState : PlayerMovementState
         GD.Print("Jump Unit Enter");
         owner.animationPlayer.Play(animationJump);
         Jump();
+        AudioManager.PlayeSound("PlayerJump");
     }
 
     private void Jump()

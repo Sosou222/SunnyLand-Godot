@@ -12,6 +12,7 @@ public partial class PlayerHurtState : PlayerMovementState
     {
         GD.Print("Hurt Player Enter");
         owner.animationPlayer.Play(animationHurt);
+        AudioManager.PlayeSound("PlayerHurt");
     }
 
     public override void PhysicsUpdate(double delta)

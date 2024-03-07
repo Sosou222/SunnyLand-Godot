@@ -15,6 +15,7 @@ public partial class EnemyDeathState : EnemyState
         owner.Velocity = Vector2.Zero;
 
         Die();
+        AudioManager.PlayeSound("EnemyDeath");
     }
 
     public override void PhysicsUpdate(double delta)
