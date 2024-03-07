@@ -38,12 +38,12 @@ project/assembly_name="SunnyLand-Godot"
 [file_customization]
 
 folder_colors={
+"res://Audio/": "pink",
 "res://Entities/": "red",
 "res://Entities/Collectibles/": "purple",
 "res://Fonts/": "green",
 "res://Scenes/": "orange",
 "res://Scripts/": "blue",
-"res://Sound/": "pink",
 "res://Sprites/": "yellow",
 "res://UI/": "teal"
 }

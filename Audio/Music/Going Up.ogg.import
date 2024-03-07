@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dyqlihw4llhut"
+path="res://.godot/imported/Going Up.ogg-c4c27e32c81e8fa5d7e1f8aa6840e78e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Going Up.ogg"
+dest_files=["res://.godot/imported/Going Up.ogg-c4c27e32c81e8fa5d7e1f8aa6840e78e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
