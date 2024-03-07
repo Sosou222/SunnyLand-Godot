@@ -7,10 +7,6 @@ public partial class Settings : Control
 	private int busMusicID = AudioServer.GetBusIndex("Music");
 	private int busSFXID = AudioServer.GetBusIndex("SFX");
 
-	public override void _Ready()
-	{
-		GD.Print(busMusicID);
-	}
 	private void OnValueChangedMusic(float value)
 	{
 		AudioServer.SetBusVolumeDb(busMusicID, Mathf.LinearToDb(value));
