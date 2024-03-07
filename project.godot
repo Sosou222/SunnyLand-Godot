@@ -22,6 +22,7 @@ buses/default_bus_layout=""
 [autoload]
 
 SceneManager="*res://Scripts/Autolaod/SceneManager.cs"
+AudioManager="*res://Scripts/Autolaod/AudioManager.tscn"
 
 [display]
 

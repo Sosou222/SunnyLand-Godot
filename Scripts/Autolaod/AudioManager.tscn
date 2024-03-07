@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvt6bm22n08sa"]
+
+[ext_resource type="Script" path="res://Scripts/Autolaod/AudioManager.cs" id="1_imp6u"]
+[ext_resource type="AudioStream" uid="uid://c6lnvy58vcqu5" path="res://Audio/Music/happywalking.ogg" id="2_g5l8f"]
+[ext_resource type="AudioStream" uid="uid://dyqlihw4llhut" path="res://Audio/Music/Going Up.ogg" id="3_kihva"]
+[ext_resource type="AudioStream" uid="uid://c1opgnrbqbf8s" path="res://Audio/SFX/Death.wav" id="4_b3ux8"]
+[ext_resource type="AudioStream" uid="uid://byyfmpvng5ner" path="res://Audio/SFX/Jump.wav" id="5_38pne"]
+[ext_resource type="AudioStream" uid="uid://ds1frysbius06" path="res://Audio/SFX/Hurt.wav" id="6_70pas"]
+[ext_resource type="AudioStream" uid="uid://ck27tse71tsxk" path="res://Audio/SFX/PickUp.wav" id="7_56hxo"]
+[ext_resource type="AudioStream" uid="uid://vlji7pw4uojq" path="res://Audio/SFX/EnemyDeath.wav" id="8_ccbn2"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("musicParent", "sfxParent")]
+script = ExtResource("1_imp6u")
+musicParent = NodePath("Music")
+sfxParent = NodePath("SFX")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="Level" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("2_g5l8f")
+bus = &"Music"
+
+[node name="Menu" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_kihva")
+bus = &"Music"
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="PlayerDeath" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_b3ux8")
+bus = &"SFX"
+
+[node name="PlayerJump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_38pne")
+bus = &"SFX"
+
+[node name="PlayerHurt" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_70pas")
+bus = &"SFX"
+
+[node name="PickUp" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_56hxo")
+bus = &"SFX"
+
+[node name="EnemyDeath" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_ccbn2")
+bus = &"SFX"
