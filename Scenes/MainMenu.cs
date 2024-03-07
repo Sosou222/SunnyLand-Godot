@@ -14,6 +14,11 @@ public partial class MainMenu : Control
         AudioManager.PlayMusic("Level");
     }
 
+    private void OnSettingsButtonPressed()
+    {
+        SceneManager.instance.LoadScene("Settings");
+    }
+
     private void OnQuitButtonPressed()
     {
         SceneManager.instance.QuitGame();

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://bph3w11clspbs"]
+
+[ext_resource type="PackedScene" uid="uid://ct1k72pq4fppb" path="res://UI/Background.tscn" id="1_51xxn"]
+[ext_resource type="Script" path="res://Scenes/Settings.cs" id="1_re5sg"]
+[ext_resource type="FontFile" uid="uid://njgx4srbq8as" path="res://Fonts/m5x7.ttf" id="2_gc46x"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_re5sg")
+
+[node name="MusicHSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 95.0
+offset_right = 335.0
+offset_bottom = 111.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="MusicHSlider"]
+layout_mode = 0
+offset_left = -57.0
+offset_top = -7.0
+offset_right = -1.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gc46x")
+theme_override_font_sizes/font_size = 32
+text = "Music"
+
+[node name="SFXHSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 121.0
+offset_right = 334.0
+offset_bottom = 137.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="SFXHSlider"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -7.0
+offset_right = -1.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gc46x")
+theme_override_font_sizes/font_size = 32
+text = "SFX"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 169.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("2_gc46x")
+theme_override_font_sizes/font_size = 32
+text = "Back
+"
+
+[node name="Background" parent="." instance=ExtResource("1_51xxn")]
+isAnamtion = true
+
+[connection signal="value_changed" from="MusicHSlider" to="." method="OnValueChangedMusic"]
+[connection signal="drag_ended" from="SFXHSlider" to="." method="OnDragEndedSFX"]
+[connection signal="value_changed" from="SFXHSlider" to="." method="OnValueChangedSFX"]
+[connection signal="pressed" from="BackButton" to="." method="OnBackButtonPressed"]

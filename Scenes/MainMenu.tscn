@@ -24,6 +24,17 @@ theme_override_font_sizes/font_size = 32
 text = "Start
 "
 
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 105.0
+offset_right = 328.0
+offset_bottom = 149.0
+theme_override_fonts/font = ExtResource("2_x4u4n")
+theme_override_font_sizes/font_size = 32
+text = "Settings
+"
+
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 168.0
@@ -38,4 +49,5 @@ text = "Quit"
 isAnamtion = true
 
 [connection signal="pressed" from="StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="OnSettingsButtonPressed"]
 [connection signal="pressed" from="QuitButton" to="." method="OnQuitButtonPressed"]
