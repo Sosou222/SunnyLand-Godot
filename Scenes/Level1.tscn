@@ -7,3 +7,8 @@
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_y4jln")
 format = 2
+layer_0/name = "Backround"
+layer_1/name = "Middle"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "ForeGround"
+layer_2/tile_data = PackedInt32Array()
