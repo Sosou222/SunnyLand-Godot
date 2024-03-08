@@ -65,4 +65,10 @@ public partial class HealthComponent : Node
         Health = MaxHealth;
     }
 
+    public void SetMaxHealth(int value)
+    {
+        MaxHealth = Math.Min(maxHealth + value, maxHealthHardCap);
+        Health = MaxHealth;
+    }
+
 }

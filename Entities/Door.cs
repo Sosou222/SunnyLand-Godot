@@ -13,6 +13,7 @@ public partial class Door : Area2D
 			return;
 		if (Input.IsActionJustPressed("PlayerUp"))
 		{
+			GlobalPlayerInfo.MaxHealth = player.healthComponent.MaxHealth;
 			SceneManager.instance.LoadScene(nextLevel);
 		}
 	}

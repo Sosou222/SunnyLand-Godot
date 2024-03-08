@@ -65,6 +65,68 @@ layer_1/tile_data = PackedInt32Array(-327592, 458752, 1, -262056, 458752, 1, -19
 layer_2/name = "Foreground"
 layer_2/tile_data = PackedInt32Array(-196577, 196608, 7, -196574, 196608, 7, -196571, 196608, 7, -196564, 196608, 7, -196562, 196608, 7, -524232, 196608, 7, -524233, 196608, 7, -524234, 196608, 7, -131046, 196608, 7, -1048504, 196608, 7, -1572772, 196608, 7, -1572773, 196608, 7, -1572774, 196608, 7, -1572768, 196608, 7, -720766, 196608, 7, -720761, 196608, 7, -720758, 196608, 7, -720755, 196608, 7, -720754, 196608, 7, -720756, 196608, 7, -196494, 196608, 7, -196495, 196608, 7, -196496, 196608, 7, -196497, 196608, 7, -196498, 196608, 7, -196499, 196608, 7, -196486, 196608, 7, -196460, 196608, 7, -196459, 196608, 7, -196458, 196608, 7, -196457, 196608, 7, -196448, 196608, 7, -196470, 196608, 7, -196471, 196608, 7, -196472, 196608, 7, -196473, 196608, 7, -393090, 720896, 7, -393073, 720896, 7, -720743, 720896, 7, -851900, 720896, 7, -458684, 720896, 7, -327628, 720896, 7, -327621, 589824, 7, -524211, 589824, 7, -786355, 589824, 7, -393139, 589824, 7, -720798, 589824, 7, -851870, 589824, 7, -1048478, 589824, 7, -524145, 589824, 7, -524136, 589824, 7, -1572770, 65536, 7, -1048501, 65536, 7, -1048502, 65536, 7, -524231, 65536, 7, -196567, 65536, 7, -196566, 65536, 7, 16, 65536, 7, 15, 65536, 7, 14, 65536, 7, 13, 65536, 7, 12, 65536, 7, 20, 65536, 7)
 
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Gem" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(95, 1)
+
+[node name="Gem2" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(416, -34)
+
+[node name="Gem3" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(1023, -201)
+
+[node name="Gem4" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(1320, -348)
+
+[node name="Gem5" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(1222, -396)
+
+[node name="Gem6" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(1185, -482)
+
+[node name="Gem7" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(1303, -520)
+
+[node name="Gem8" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(1403, -440)
+
+[node name="Gem9" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(1884, -370)
+
+[node name="Gem10" parent="Collectibles" instance=ExtResource("13_36ukr")]
+position = Vector2(812, -120)
+
+[node name="Cherry" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(543, -52)
+
+[node name="Cherry2" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(712, -56)
+
+[node name="Cherry3" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(863, -127)
+
+[node name="Cherry4" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(912, -127)
+
+[node name="Cherry5" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(1164, -257)
+
+[node name="Cherry6" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(1467, -379)
+
+[node name="Cherry7" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(1518, -380)
+
+[node name="Cherry8" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(1635, -399)
+
+[node name="Cherry9" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(2155, -176)
+
+[node name="Cherry10" parent="Collectibles" instance=ExtResource("14_jastp")]
+position = Vector2(2521, -271)
+
 [node name="Player" parent="." instance=ExtResource("2_g3vp1")]
 position = Vector2(29, -10)
 
@@ -152,68 +214,6 @@ position = Vector2(1748, -227)
 
 [node name="EagleEnemy2" parent="Enemies" instance=ExtResource("12_dg4ea")]
 position = Vector2(2328, -283)
-
-[node name="Collectibles" type="Node" parent="."]
-
-[node name="Gem" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(95, 1)
-
-[node name="Gem2" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(416, -34)
-
-[node name="Gem3" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(1023, -201)
-
-[node name="Gem4" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(1320, -348)
-
-[node name="Gem5" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(1222, -396)
-
-[node name="Gem6" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(1185, -482)
-
-[node name="Gem7" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(1303, -520)
-
-[node name="Gem8" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(1403, -440)
-
-[node name="Gem9" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(1884, -370)
-
-[node name="Gem10" parent="Collectibles" instance=ExtResource("13_36ukr")]
-position = Vector2(812, -120)
-
-[node name="Cherry" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(543, -52)
-
-[node name="Cherry2" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(712, -56)
-
-[node name="Cherry3" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(863, -127)
-
-[node name="Cherry4" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(912, -127)
-
-[node name="Cherry5" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(1164, -257)
-
-[node name="Cherry6" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(1467, -379)
-
-[node name="Cherry7" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(1518, -380)
-
-[node name="Cherry8" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(1635, -399)
-
-[node name="Cherry9" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(2155, -176)
-
-[node name="Cherry10" parent="Collectibles" instance=ExtResource("14_jastp")]
-position = Vector2(2521, -271)
 
 [node name="Shop" parent="." instance=ExtResource("15_3f1ka")]
 position = Vector2(2592, -255)

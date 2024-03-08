@@ -3,8 +3,16 @@ using System;
 
 public partial class Player : Unit
 {
-    public int cherryCount { get; private set; } = 0;
-    public int gemCount { get; private set; } = 0;
+    public int cherryCount
+    {
+        get { return GlobalPlayerInfo.CherryCount; }
+        private set { GlobalPlayerInfo.CherryCount = value; }
+    }
+    public int gemCount
+    {
+        get { return GlobalPlayerInfo.GemCount; }
+        private set { GlobalPlayerInfo.GemCount = value; }
+    }
 
     private double invisiblityFrames = 0.0f;
     private const double invisiblityFramesMax = 2.0f;
@@ -20,6 +28,15 @@ public partial class Player : Unit
     [Signal]
     public delegate void GemCountChangeEventHandler(int newValue);
 
+    public override void _Ready()
+    {
+        base._Ready();
+
+        if (GlobalPlayerInfo.MaxHealth > 0)
+        {
+            healthComponent.SetMaxHealth(GlobalPlayerInfo.MaxHealth);
+        }
+    }
 
     public override void _Process(double delta)
     {

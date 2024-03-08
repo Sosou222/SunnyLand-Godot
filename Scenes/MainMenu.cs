@@ -10,6 +10,7 @@ public partial class MainMenu : Control
 
     private void OnStartButtonPressed()
     {
+        GlobalPlayerInfo.ResetInfo();
         SceneManager.instance.LoadScene("Level1");
         AudioManager.PlayMusic("Level");
     }
