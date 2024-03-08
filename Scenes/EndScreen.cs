@@ -13,14 +13,20 @@ public partial class EndScreen : Control
 	private Label noteLabel;
 
 	private int currentCherryValue = 0;
+	private int CurrentCherryValue
+	{
+		get { return currentCherryValue; }
+		set { currentCherryValue = value; UpdateCherryCount(); }
+	}
 
 	public override void _Ready()
 	{
+		SetNoteText();
 		congratulationsLabel.Visible = true;
 		var tween = GetTree().CreateTween();
 		tween.TweenInterval(1.0f);
 		tween.TweenProperty(cherrySprite, "visible", true, 0.05f);
-		tween.TweenProperty(this, "currentCherryValue", GlobalPlayerInfo.CherryCount, 2.0f).From(0);
+		tween.TweenProperty(this, "CurrentCherryValue", GlobalPlayerInfo.CherryCount, 2.0f).From(0);
 		tween.TweenInterval(1.0f);
 		tween.TweenProperty(noteLabel, "visible", true, 0.05f);
 		tween.TweenInterval(4.0f);
@@ -45,6 +51,11 @@ public partial class EndScreen : Control
 		{
 			noteLabel.Text = "Perfect. All cherries got!";
 		}
+	}
+
+	private void UpdateCherryCount()
+	{
+		cherryLabel.Text = "x" + currentCherryValue;
 	}
 
 	private void HideAll()
