@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://duj4m0oydc075"]
+
+[ext_resource type="PackedScene" uid="uid://ct1k72pq4fppb" path="res://UI/Background.tscn" id="1_8ysf5"]
+[ext_resource type="Texture2D" uid="uid://bb44iqj4xxt51" path="res://Sprites/Sunny-land-files/Graphical Assets/sprites/cherry/cherry-1.png" id="2_n08u0"]
+[ext_resource type="FontFile" uid="uid://njgx4srbq8as" path="res://Fonts/m5x7.ttf" id="3_53t01"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" parent="." instance=ExtResource("1_8ysf5")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(213, 134)
+texture = ExtResource("2_n08u0")
+
+[node name="Label" type="Label" parent="Background/Sprite2D"]
+offset_left = 10.0
+offset_top = -15.0
+offset_right = 50.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_53t01")
+theme_override_font_sizes/font_size = 32
+text = "x0"
+
+[node name="CongratulationsLabel" type="Label" parent="Background"]
+offset_left = 68.0
+offset_top = 21.0
+offset_right = 392.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_53t01")
+theme_override_font_sizes/font_size = 64
+text = "Congratulations"
+
+[node name="NoteLabel" type="Label" parent="Background"]
+offset_left = 70.0
+offset_top = 186.0
+offset_right = 394.0
+offset_bottom = 237.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_53t01")
+theme_override_font_sizes/font_size = 48
+text = "You did good"
+horizontal_alignment = 1
