@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnq1awoyghpjs"]
+[gd_scene load_steps=12 format=3 uid="uid://dnq1awoyghpjs"]
 
 [ext_resource type="TileSet" uid="uid://cmvltb2jr6p2m" path="res://Scenes/TileSet.tres" id="1_xgxwy"]
 [ext_resource type="PackedScene" uid="uid://blf8ofe3m4xsa" path="res://Entities/Units/Player/Player.tscn" id="2_pms8j"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://b2qpcwh3pm1kg" path="res://UI/HealthBarUI.tscn" id="5_6lry1"]
 [ext_resource type="PackedScene" uid="uid://b0jb8abfa0s2b" path="res://Entities/MovingPlatforrm/MovingPlatformOneWayCircle.tscn" id="7_b65h4"]
 [ext_resource type="PackedScene" uid="uid://c1m4lx00l45yd" path="res://Entities/MovingPlatforrm/MovingPlatformOneWaySquare.tscn" id="8_blrl5"]
+[ext_resource type="PackedScene" uid="uid://bgfucjd6swnsk" path="res://UI/TextBoxDetector.tscn" id="9_ftpkx"]
+[ext_resource type="PackedScene" uid="uid://b3bjhm07ospmb" path="res://Entities/Units/Enemies/EagleEnemy.tscn" id="10_w614y"]
+[ext_resource type="PackedScene" uid="uid://b26s6483hqcrb" path="res://Entities/Units/Enemies/OpossumEnemy.tscn" id="11_cm54y"]
 
 [node name="Level2" type="Node2D"]
 
@@ -21,7 +24,7 @@ layer_2/name = "Foreground"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("2_pms8j")]
-position = Vector2(1137, 132)
+position = Vector2(11, -56)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -50,5 +53,37 @@ position = Vector2(553, 240)
 [node name="MovingPlatformOneWay2" parent="MovingPlatforms" instance=ExtResource("8_blrl5")]
 position = Vector2(672, 201)
 
+[node name="Messages" type="Node" parent="."]
+
+[node name="TextBoxDetector" parent="Messages" instance=ExtResource("9_ftpkx")]
+position = Vector2(1142, 116)
+minumumLenght = 40
+
+[node name="Label" parent="Messages/TextBoxDetector/TextBox/MarginContainer" index="0"]
+text = "Hold shift to run"
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="OpossumEnemy" parent="Enemies" instance=ExtResource("11_cm54y")]
+position = Vector2(430, 185)
+
+[node name="OpossumEnemy2" parent="Enemies" instance=ExtResource("11_cm54y")]
+position = Vector2(847, 187)
+
+[node name="EagleEnemy" parent="Enemies" instance=ExtResource("10_w614y")]
+position = Vector2(609, 171)
+
+[node name="EagleEnemy2" parent="Enemies" instance=ExtResource("10_w614y")]
+position = Vector2(1180, -34)
+
+[node name="EagleEnemy3" parent="Enemies" instance=ExtResource("10_w614y")]
+position = Vector2(1267, -275)
+
+[node name="EagleEnemy4" parent="Enemies" instance=ExtResource("10_w614y")]
+position = Vector2(1247, -483)
+
 [connection signal="CherryCountChange" from="Player" to="CanvasLayer/CherryUI" method="UpdateValue"]
 [connection signal="GemCountChange" from="Player" to="CanvasLayer/GemUI" method="UpdateValue"]
+
+[editable path="Messages/TextBoxDetector"]
+[editable path="Messages/TextBoxDetector/TextBox"]
