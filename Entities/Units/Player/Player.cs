@@ -36,11 +36,14 @@ public partial class Player : Unit
         {
             healthComponent.SetMaxHealth(GlobalPlayerInfo.MaxHealth);
         }
+        CallDeferred("emit_signal", SignalName.CherryCountChange, cherryCount);
+        CallDeferred("emit_signal", SignalName.GemCountChange, gemCount);
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
+
 
         if (invisiblityFrames >= 0.0f)
         {

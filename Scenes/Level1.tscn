@@ -29,6 +29,47 @@ layer_2/name = "ForeGround"
 layer_2/z_index = -2
 layer_2/tile_data = PackedInt32Array(-65494, 196608, 7, -65505, 196608, 7, -65502, 196608, 7, -65498, 196608, 7, -65500, 65536, 7, -65488, 65536, 7, -65522, 65536, 7, -65528, 65536, 7, -65531, 65536, 7, -65534, 65536, 7, 64, 65536, 7, 66, 65536, 7, -393141, 65536, 7, -393139, 65536, 7, 71, 65536, 7, -393144, 196608, 7, -393143, 196608, 7, 62, 196608, 7, 61, 196608, 7, 56, 196608, 7, 55, 196608, 7, 54, 196608, 7, 53, 196608, 7, 52, 196608, 7, -131026, 589824, 7, -131045, 720896, 7, -524199, 720896, 10, 65620, 720896, 10, -65435, 655360, 10, -720801, 655360, 10, -655266, 655360, 10, -589731, 655360, 10, -655269, 720896, 10, -655268, 720896, 10, -720805, 720896, 10, -720806, 720896, 10, -786341, 720896, 10, -786342, 720896, 10, -851879, 720896, 10, -851878, 720896, 10)
 
+[node name="Player" parent="." instance=ExtResource("2_d2mbx")]
+position = Vector2(44, -26)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Background" parent="Player/Camera2D" instance=ExtResource("3_204iw")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CherryUI" parent="CanvasLayer" instance=ExtResource("4_4at5q")]
+offset_left = 392.0
+offset_right = 424.0
+
+[node name="GemUI" parent="CanvasLayer" instance=ExtResource("5_4kqtn")]
+offset_left = 392.0
+offset_top = 32.0
+offset_right = 424.0
+offset_bottom = 64.0
+
+[node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_s5sey")]
+player = NodePath("../../Player")
+
+[node name="MovingPlatforms" type="Node" parent="."]
+
+[node name="MovingPlatform" parent="MovingPlatforms" instance=ExtResource("7_13cap")]
+position = Vector2(1122, -10)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="OpossumEnemy" parent="Enemies" instance=ExtResource("8_eh0oi")]
+position = Vector2(872, -2)
+
+[node name="OpossumEnemy2" parent="Enemies" instance=ExtResource("8_eh0oi")]
+position = Vector2(1026, -5)
+
+[node name="OpossumEnemy3" parent="Enemies" instance=ExtResource("8_eh0oi")]
+position = Vector2(1303, -102)
+
+[node name="OpossumEnemy4" parent="Enemies" instance=ExtResource("8_eh0oi")]
+position = Vector2(1785, -164)
+
 [node name="Collectibles" type="Node" parent="."]
 
 [node name="Cherry" parent="Collectibles" instance=ExtResource("8_pcc34")]
@@ -90,47 +131,6 @@ position = Vector2(1612, -93)
 
 [node name="Gem10" parent="Collectibles" instance=ExtResource("9_l6kj7")]
 position = Vector2(1594, -153)
-
-[node name="Player" parent="." instance=ExtResource("2_d2mbx")]
-position = Vector2(44, -26)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="Background" parent="Player/Camera2D" instance=ExtResource("3_204iw")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CherryUI" parent="CanvasLayer" instance=ExtResource("4_4at5q")]
-offset_left = 392.0
-offset_right = 424.0
-
-[node name="GemUI" parent="CanvasLayer" instance=ExtResource("5_4kqtn")]
-offset_left = 392.0
-offset_top = 32.0
-offset_right = 424.0
-offset_bottom = 64.0
-
-[node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_s5sey")]
-player = NodePath("../../Player")
-
-[node name="MovingPlatforms" type="Node" parent="."]
-
-[node name="MovingPlatform" parent="MovingPlatforms" instance=ExtResource("7_13cap")]
-position = Vector2(1122, -10)
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="OpossumEnemy" parent="Enemies" instance=ExtResource("8_eh0oi")]
-position = Vector2(872, -2)
-
-[node name="OpossumEnemy2" parent="Enemies" instance=ExtResource("8_eh0oi")]
-position = Vector2(1026, -5)
-
-[node name="OpossumEnemy3" parent="Enemies" instance=ExtResource("8_eh0oi")]
-position = Vector2(1303, -102)
-
-[node name="OpossumEnemy4" parent="Enemies" instance=ExtResource("8_eh0oi")]
-position = Vector2(1785, -164)
 
 [node name="Shop" parent="." instance=ExtResource("11_hup1i")]
 position = Vector2(1893, -144)

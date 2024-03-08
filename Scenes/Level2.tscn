@@ -28,6 +28,65 @@ layer_1/tile_data = PackedInt32Array(-65535, 196608, 1, -65534, 196608, 1, -6553
 layer_2/name = "Foreground"
 layer_2/tile_data = PackedInt32Array(-131070, 196608, 7, -131071, 65536, 7, -131072, 65536, 7, -65537, 196608, 7, -65538, 196608, 7, 84, 720897, 12, 196691, 720897, 12, 589893, 720897, 12, -131002, 720897, 12, -786348, 720897, 12, -1245114, 720897, 12, -1245113, 720897, 12, -1572792, 720897, 12, -1900439, 851969, 9, -1900437, 851969, 9, -2031511, 851969, 9, -1179579, 589825, 10, -917435, 589825, 10, 196652, 589825, 10, 196651, 589825, 10, 196650, 589825, 10, 196649, 589825, 10, 196648, 589825, 10, 196647, 589825, 10, 196646, 589825, 10, 196645, 589825, 10, 196644, 589825, 10, 196643, 589825, 10, 196642, 589825, 10, 196641, 589825, 10, 196640, 589825, 10, 524334, 589825, 10, 524318, 589825, 10, 1048613, 720897, 12, 1048611, 720897, 12, 1048620, 720897, 12, -1965973, 327681, 12, -1965972, 327681, 12, -1834899, 327681, 12, -2097046, 327681, 12, -2097047, 327681, 12, -2228119, 327681, 12, -2162583, 327681, 12, 917570, 720897, 12)
 
+[node name="Player" parent="." instance=ExtResource("2_pms8j")]
+position = Vector2(11, -56)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Background" parent="Player/Camera2D" instance=ExtResource("3_g704j")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CherryUI" parent="CanvasLayer" instance=ExtResource("3_w0wd4")]
+offset_left = 392.0
+offset_right = 424.0
+
+[node name="GemUI" parent="CanvasLayer" instance=ExtResource("4_87pxh")]
+offset_left = 392.0
+offset_top = 32.0
+offset_right = 424.0
+offset_bottom = 64.0
+
+[node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_6lry1")]
+player = NodePath("../../Player")
+
+[node name="MovingPlatforms" type="Node" parent="."]
+
+[node name="MovingPlatformOneWay" parent="MovingPlatforms" instance=ExtResource("7_b65h4")]
+position = Vector2(553, 240)
+
+[node name="MovingPlatformOneWay2" parent="MovingPlatforms" instance=ExtResource("8_blrl5")]
+position = Vector2(672, 201)
+
+[node name="Messages" type="Node" parent="."]
+
+[node name="TextBoxDetector" parent="Messages" instance=ExtResource("9_ftpkx")]
+position = Vector2(1142, 116)
+minumumLenght = 40
+
+[node name="Label" parent="Messages/TextBoxDetector/TextBox/MarginContainer" index="0"]
+text = "Hold shift to run"
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="OpossumEnemy" parent="Enemies" instance=ExtResource("11_cm54y")]
+position = Vector2(430, 185)
+
+[node name="OpossumEnemy2" parent="Enemies" instance=ExtResource("11_cm54y")]
+position = Vector2(847, 187)
+
+[node name="EagleEnemy" parent="Enemies" instance=ExtResource("10_w614y")]
+position = Vector2(609, 171)
+
+[node name="EagleEnemy2" parent="Enemies" instance=ExtResource("10_w614y")]
+position = Vector2(1180, -34)
+
+[node name="EagleEnemy3" parent="Enemies" instance=ExtResource("10_w614y")]
+position = Vector2(1267, -275)
+
+[node name="EagleEnemy4" parent="Enemies" instance=ExtResource("10_w614y")]
+position = Vector2(1247, -483)
+
 [node name="Collectibles" type="Node" parent="."]
 
 [node name="Gem" parent="Collectibles" instance=ExtResource("12_3l1qj")]
@@ -107,65 +166,6 @@ position = Vector2(1115, -154)
 
 [node name="Cherry16" parent="Collectibles" instance=ExtResource("13_fovqb")]
 position = Vector2(1444, -451)
-
-[node name="Player" parent="." instance=ExtResource("2_pms8j")]
-position = Vector2(11, -56)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="Background" parent="Player/Camera2D" instance=ExtResource("3_g704j")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CherryUI" parent="CanvasLayer" instance=ExtResource("3_w0wd4")]
-offset_left = 392.0
-offset_right = 424.0
-
-[node name="GemUI" parent="CanvasLayer" instance=ExtResource("4_87pxh")]
-offset_left = 392.0
-offset_top = 32.0
-offset_right = 424.0
-offset_bottom = 64.0
-
-[node name="HealthBarUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_6lry1")]
-player = NodePath("../../Player")
-
-[node name="MovingPlatforms" type="Node" parent="."]
-
-[node name="MovingPlatformOneWay" parent="MovingPlatforms" instance=ExtResource("7_b65h4")]
-position = Vector2(553, 240)
-
-[node name="MovingPlatformOneWay2" parent="MovingPlatforms" instance=ExtResource("8_blrl5")]
-position = Vector2(672, 201)
-
-[node name="Messages" type="Node" parent="."]
-
-[node name="TextBoxDetector" parent="Messages" instance=ExtResource("9_ftpkx")]
-position = Vector2(1142, 116)
-minumumLenght = 40
-
-[node name="Label" parent="Messages/TextBoxDetector/TextBox/MarginContainer" index="0"]
-text = "Hold shift to run"
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="OpossumEnemy" parent="Enemies" instance=ExtResource("11_cm54y")]
-position = Vector2(430, 185)
-
-[node name="OpossumEnemy2" parent="Enemies" instance=ExtResource("11_cm54y")]
-position = Vector2(847, 187)
-
-[node name="EagleEnemy" parent="Enemies" instance=ExtResource("10_w614y")]
-position = Vector2(609, 171)
-
-[node name="EagleEnemy2" parent="Enemies" instance=ExtResource("10_w614y")]
-position = Vector2(1180, -34)
-
-[node name="EagleEnemy3" parent="Enemies" instance=ExtResource("10_w614y")]
-position = Vector2(1267, -275)
-
-[node name="EagleEnemy4" parent="Enemies" instance=ExtResource("10_w614y")]
-position = Vector2(1247, -483)
 
 [node name="Shop" parent="." instance=ExtResource("14_f5wt0")]
 position = Vector2(1514, -431)
