@@ -12,6 +12,8 @@ public partial class EndScreen : Control
 	[Export]
 	private Label noteLabel;
 
+	private Tween tween;
+
 	private int currentCherryValue = 0;
 	private int CurrentCherryValue
 	{
@@ -23,7 +25,8 @@ public partial class EndScreen : Control
 	{
 		SetNoteText();
 		congratulationsLabel.Visible = true;
-		var tween = GetTree().CreateTween();
+
+		tween = GetTree().CreateTween();
 		tween.TweenInterval(1.0f);
 		tween.TweenProperty(cherrySprite, "visible", true, 0.05f);
 		tween.TweenProperty(this, "CurrentCherryValue", GlobalPlayerInfo.CherryCount, 2.0f).From(0);
@@ -31,10 +34,15 @@ public partial class EndScreen : Control
 		tween.TweenProperty(noteLabel, "visible", true, 0.05f);
 		tween.TweenInterval(4.0f);
 
-		tween.TweenCallback(Callable.From(() => HideAll()));
-		tween.TweenCallback(Callable.From(() => SceneManager.instance.LoadScene("MainMenu")));
-
 		tween.Play();
+	}
+
+	public override void _Process(double delta)
+	{
+		if (!tween.IsValid())
+		{
+			SceneManager.instance.LoadScene("MainMenu");
+		}
 	}
 
 	private void SetNoteText()
@@ -56,14 +64,5 @@ public partial class EndScreen : Control
 	private void UpdateCherryCount()
 	{
 		cherryLabel.Text = "x" + currentCherryValue;
-	}
-
-	private void HideAll()
-	{
-		congratulationsLabel.Visible = false;
-		cherrySprite.Visible = false;
-		cherryLabel.Text = "x0";
-		noteLabel.Visible = false;
-		noteLabel.Text = "";
 	}
 }
