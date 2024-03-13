@@ -25,6 +25,9 @@ public partial class Player : Unit
         {
             healthComponent.SetMaxHealth(GlobalPlayerInfo.MaxHealth);
         }
+
+        GlobalPlayerInfo.RemeberCollecibles();
+
         CallDeferred("emit_signal", SignalName.CherryCountChange, GlobalPlayerInfo.CherryCount);
         CallDeferred("emit_signal", SignalName.GemCountChange, GlobalPlayerInfo.GemCount);
     }
@@ -37,11 +40,6 @@ public partial class Player : Unit
         if (invisiblityFrames >= 0.0f)
         {
             invisiblityFrames -= delta;
-        }
-
-        if (Input.IsKeyPressed(Key.U))
-        {
-            Hurt(false, 20);
         }
 
     }

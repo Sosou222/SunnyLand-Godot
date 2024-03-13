@@ -13,6 +13,8 @@ public partial class PlayerDeathState : PlayerState
         GD.Print("Death Player Enter");
         owner.animationPlayer.Play(animationHurt);
 
+        GlobalPlayerInfo.LoadRemeberedCollectibles();
+
         tween = owner.animationPlayer.CreateTween();
 
         tween.TweenProperty(owner.GetNode<AnimatedSprite2D>("AnimatedSprite2D"), "position", new Vector2(0, -40), 1.0f).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Circ);
