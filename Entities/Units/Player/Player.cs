@@ -3,17 +3,6 @@ using System;
 
 public partial class Player : Unit
 {
-    public int cherryCount
-    {
-        get { return GlobalPlayerInfo.CherryCount; }
-        private set { GlobalPlayerInfo.CherryCount = value; }
-    }
-    public int gemCount
-    {
-        get { return GlobalPlayerInfo.GemCount; }
-        private set { GlobalPlayerInfo.GemCount = value; }
-    }
-
     private double invisiblityFrames = 0.0f;
     private const double invisiblityFramesMax = 2.0f;
 
@@ -36,8 +25,8 @@ public partial class Player : Unit
         {
             healthComponent.SetMaxHealth(GlobalPlayerInfo.MaxHealth);
         }
-        CallDeferred("emit_signal", SignalName.CherryCountChange, cherryCount);
-        CallDeferred("emit_signal", SignalName.GemCountChange, gemCount);
+        CallDeferred("emit_signal", SignalName.CherryCountChange, GlobalPlayerInfo.CherryCount);
+        CallDeferred("emit_signal", SignalName.GemCountChange, GlobalPlayerInfo.GemCount);
     }
 
     public override void _Process(double delta)
@@ -50,20 +39,25 @@ public partial class Player : Unit
             invisiblityFrames -= delta;
         }
 
+        if (Input.IsKeyPressed(Key.U))
+        {
+            Hurt(false, 20);
+        }
+
     }
     public void AddCollectible(string name, int amount = 1)
     {
         if (name == "Cherry")
         {
-            cherryCount += amount;
-            EmitSignal(SignalName.CherryCountChange, cherryCount);
-            GD.Print($"Cherry count:{cherryCount}");
+            GlobalPlayerInfo.CherryCount += amount;
+            EmitSignal(SignalName.CherryCountChange, GlobalPlayerInfo.CherryCount);
+            GD.Print($"Cherry count:{GlobalPlayerInfo.CherryCount}");
         }
         if (name == "Gem")
         {
-            gemCount += amount;
-            EmitSignal(SignalName.GemCountChange, gemCount);
-            GD.Print($"Gem count:{gemCount}");
+            GlobalPlayerInfo.GemCount += amount;
+            EmitSignal(SignalName.GemCountChange, GlobalPlayerInfo.GemCount);
+            GD.Print($"Gem count:{GlobalPlayerInfo.GemCount}");
         }
     }
 

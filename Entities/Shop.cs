@@ -50,7 +50,7 @@ public partial class Shop : Area2D
 
 	private void Purchase()
 	{
-		if (player.gemCount >= purcvhasePrice)
+		if (GlobalPlayerInfo.GemCount >= purcvhasePrice)
 		{
 			player.AddCollectible("Gem", -purcvhasePrice);
 			purchaseTimes--;

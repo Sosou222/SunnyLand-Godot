@@ -7,7 +7,6 @@ public partial class GlobalPlayerInfo : Node
 
     public static int CherryCount = 0;
     public static int GemCount = 0;
-
     public static int MaxHealth = 0;
 
     public override void _Ready()
