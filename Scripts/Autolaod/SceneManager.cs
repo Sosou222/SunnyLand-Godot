@@ -51,6 +51,7 @@ public partial class SceneManager : Node
 
     public void QuitGame()
     {
+        loadingScene.Free();
         GetTree().Quit();
     }
 
