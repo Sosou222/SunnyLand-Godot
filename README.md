@@ -1,6 +1,9 @@
 # SunnyLand-Godot
 A 2D platformer created with Godot 4 C# and SunnyLand asset pack.
 
+Made to learn a bit of Godot 4.
+Expect Bugs.
+
 SunnyLand asset pack by ansimuz link:
 https://ansimuz.itch.io/sunny-land-pixel-game-art
 
