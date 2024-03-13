@@ -8,6 +8,7 @@ public partial class SceneManager : Node
     private string SceneFolder = "Scenes";
 
     private PackedScene loadingScene = null;
+    private PackedScene settingsScene = null;
 
     private string sceneToLoad = "";
 
@@ -21,6 +22,7 @@ public partial class SceneManager : Node
         instance = this;
 
         loadingScene = ResourceLoader.Load<PackedScene>($"res://{SceneFolder}/LoadingScreen.tscn");
+        settingsScene = ResourceLoader.Load<PackedScene>($"res://{SceneFolder}/Settings.tscn");
     }
 
     public override void _Process(double delta)
@@ -38,6 +40,11 @@ public partial class SceneManager : Node
 
     public void LoadScene(string sceneName)
     {
+        if (sceneName == "Settings")
+        {
+            GetTree().ChangeSceneToPacked(settingsScene);
+            return;
+        }
         GetTree().ChangeSceneToPacked(loadingScene);
         sceneToLoad = $"res://{SceneFolder}/{sceneName}.tscn";
         ResourceLoader.LoadThreadedRequest(sceneToLoad);
