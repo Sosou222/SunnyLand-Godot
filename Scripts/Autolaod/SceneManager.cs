@@ -21,7 +21,6 @@ public partial class SceneManager : Node
         instance = this;
 
         loadingScene = ResourceLoader.Load<PackedScene>($"res://{SceneFolder}/LoadingScreen.tscn");
-        loadingScene.Instantiate();
     }
 
     public override void _Process(double delta)
@@ -51,7 +50,6 @@ public partial class SceneManager : Node
 
     public void QuitGame()
     {
-        loadingScene.Free();
         GetTree().Quit();
     }
 
